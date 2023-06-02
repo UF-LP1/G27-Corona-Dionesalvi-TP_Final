@@ -127,7 +127,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="cCentro_radioterapia.cpp" />
+    <ClCompile Include="cDosimetrista.cpp" />
+    <ClCompile Include="cEmpleado.cpp" />
+    <ClCompile Include="cFicha_paciente.cpp" />
+    <ClCompile Include="cOncologo.cpp" />
+    <ClCompile Include="cPaciente.cpp" />
+    <ClCompile Include="cTumor.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cCentro_radioterapia.h" />
+    <ClInclude Include="cDosimetrista.h" />
+    <ClInclude Include="cEmpleado.h" />
+    <ClInclude Include="cFicha_paciente.h" />
+    <ClInclude Include="cOncologo.h" />
+    <ClInclude Include="cPaciente.h" />
+    <ClInclude Include="cTumor.h" />
+    <ClInclude Include="eTamanio.h" />
+    <ClInclude Include="eUbicacion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
