@@ -6,27 +6,31 @@ cOncologo::cOncologo(string especialidad_cancer)
 }
 
 double calculo_dosis();
-void diagnostico_tumor(cPaciente* p)
-{
+
+int diagnostico_tumor(){
+
+	cFicha_paciente* ficha;
+	cPaciente* p = new cPaciente ("isabella","30997654","fem","1122335679","AB","60",ficha);
+	list <cTumor> tumores;
+
+	
 	srand(time(0));
 	int cantidad_tumores = 0 + rand() % (7) + 1;  //Primero calcula cuantos tumores tiene el paciente
 	int tamanio = 0;
 	int ubicacion = 0;
+
 	for (int i = 0; i < cantidad_tumores; i++) {
 		tamanio = 0 + rand() % (3) + 1; //Calcula tantos tamanios dependiendo la cantidad de tumores
 		ubicacion = 0 + rand() % (9) + 1;
-	}
 
-	do //Preguntar como ir guardando los tumores sin perder los datos en cada incrementacion
-	{
 		switch (tamanio)
 		{
 		case 1:
-			p.get_ficha()->get_tumor()->get_tamanio()->pequenio;
+			get_ficha()->get_tumor()->get_tamanio()->pequenio;
 		case 2:
 			p.get_ficha()->get_tumor()->get_tamanio()->mediano;
 		case 3:
-			p.get_ficha()->get_tumor()->get_tamanio()->grande;
+			p->get_ficha()->get_tumor()->get_tamanio()->grande;
 
 		default:
 			break;
@@ -57,10 +61,10 @@ void diagnostico_tumor(cPaciente* p)
 			break;
 		}
 
-		cantidad_tumores--;
-	} while (cantidad_tumores != 0);
-	
-}
+		return cantidad_tumores;
+	}
+
+		
 
 void frecuencia_semanal();
 
@@ -73,6 +77,11 @@ bool asistencia_sesion() {
 		return false;
 
 };
+
 void actualizar_ficha(cFicha_paciente *f);
+
 bool chequeo_alta();
+
 void reevaluar_tratamiento();
+
+cOncologo::~cOncologo(){}; 

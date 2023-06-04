@@ -16,7 +16,7 @@ class cCentro_radioterapia
 {
 public:
 	
-	cCentro_radioterapia(string direccion, list<cPaciente> pacientes,list <cEmpleado> empleados);
+	cCentro_radioterapia(string direccion, list<cPaciente> *pacientes,list <cEmpleado> *empleados);
 	
 	void contactar_paciente();
 	void buscar_paciente_limite_radiacion();
