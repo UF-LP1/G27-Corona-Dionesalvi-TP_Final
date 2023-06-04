@@ -13,3 +13,7 @@ void buscar_paciente_limite_radiacion();
 
 void buscar_paciente_en_tratamiento();
 
+void sacar_paciente();
+
+void agregar_paciente();
+
