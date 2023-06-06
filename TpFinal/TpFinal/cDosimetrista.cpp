@@ -10,30 +10,40 @@ double calculo_dosis();
 void tipo_terapia_a_recibir(){
 	enum tipo_de_tratamiento {radioterapia_de_hoz,braquiterapia,radioterapia_sistemica};
 	cPaciente* p;
+	cOncologo* oncologo = new cOncologo("cabeza", "43134812");
 	int b = oncologo->diagnostico_tumor(); //Guardo cantidad de tumores que tiene (entre 1 y 7)
-	eUbicacion a = p -> get_ficha()->get_tumor()->get_ubicacion(); //Accedemos a la ubicacion del tumor
+	eUbicacion *a = p -> get_ficha()->get_tumor()->get_ubicacion(); //Accedemos a la ubicacion del tumor
 
 	for (int i = 0; i < b; i++) {
 		switch (a)
 		{
 			case 1:
 				p.get_ficha()->get_tipo_tratamiento()->braquiterapia;
+				break;
 			case 2:
 				p.get_ficha()->get_tipo_tratamiento()->radioterapia_de_hoz;
+				break;
 			case 3:
 				p.get_ficha()->get_tipo_tratamiento()->braquiterapia;
+				break;
 			case 4:
 				p.get_ficha()->get_tipo_tratamiento()->braquiterapia;
+				break;
 			case 5:
 				p.get_ficha()->get_tipo_tratamiento()->braquiterapia;
+				break;
 			case 6:
 				p.get_ficha()->get_tipo_tratamiento()->braquiterapia;
+				break;
 			case 7:
 				p.get_ficha()->get_tipo_tratamiento()->radioterapia_sistemica;
+				break;
 			case 8:
 				p.get_ficha()->get_tipo_tratamiento()->radioterapia_sistemica;
+				break;
 			case 9:
 				p.get_ficha()->get_tipo_tratamiento()->radioterapia_de_hoz;
+				break;
 
 		default:
 			break;

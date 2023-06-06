@@ -1,16 +1,18 @@
 #pragma once
-#include "cEmpleado.h"
+#include <list>
+#include "cEmpleado.h" 
+#include "cTumor.h"
 
-class cTumor;
+
 using namespace std;
 
 class cOncologo : public cEmpleado
 {
-	cOncologo(string especialidad_cancer);
-
-	double calculo_dosis();
-	int diagnostico_tumor();
+public:
+	cOncologo(string especialidad_cancer, string matricula);
 	void frecuencia_semanal();
+	double calculo_dosis();
+	list <cTumor> diagnostico_tumor();
 	bool asistencia_sesion();
 	void actualizar_ficha(cFicha_paciente*f);
 	bool chequeo_alta();

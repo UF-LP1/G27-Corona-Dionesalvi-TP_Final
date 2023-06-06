@@ -1,11 +1,13 @@
 #pragma once
 
 #include <iostream>
+#include "cFicha_paciente.h"
 using namespace std;
-class cFicha_paciente;
+
 
 class cPaciente
 {
+public:
 	cPaciente(string nombre, string DNI, string sexo, string tel_contacto, string tipo_sangre, double porcentaje_salud, cFicha_paciente* ficha);
 
 	void tratamiento();

@@ -1,17 +1,26 @@
 #include "cOncologo.h"
+//#include "cPaciente.h" // no se si va
 
-cOncologo::cOncologo(string especialidad_cancer)
+
+cOncologo::cOncologo(string especialidad_cancer,string matricula):cEmpleado(matricula)
 {
 	this->especialidad_cancer = especialidad_cancer;
 }
 
-double calculo_dosis();
+cOncologo::~cOncologo() {}
 
-int diagnostico_tumor(){
+void cOncologo::frecuencia_semanal()
+{
+}
 
-	cFicha_paciente* ficha;
-	cPaciente* p = new cPaciente ("isabella","30997654","fem","1122335679","AB","60",ficha);
-	list <cTumor> tumores;
+double cOncologo::calculo_dosis() {}
+
+list<cTumor> diagnostico_tumor(){
+
+	cFicha_paciente *ficha;
+	cPaciente* p = new cPaciente("Martin", "32134575", "femenino", "1168756578", "A++", 80, ficha);
+	//cTumor* tumor = new cTumor(pequenio, cabeza, 30);
+	list<cTumor> tumores;
 
 	
 	srand(time(0));
@@ -20,18 +29,23 @@ int diagnostico_tumor(){
 	int ubicacion = 0;
 
 	for (int i = 0; i < cantidad_tumores; i++) {
+		
 		tamanio = 0 + rand() % (3) + 1; //Calcula tantos tamanios dependiendo la cantidad de tumores
 		ubicacion = 0 + rand() % (9) + 1;
+		cTumor* aux = new cTumor(pequenio, cabeza, 0);
+
 
 		switch (tamanio)
 		{
 		case 1:
-			get_ficha()->get_tumor()->get_tamanio()->pequenio;
+			aux->set_tamanio(pequenio);
+			break;
 		case 2:
-			p.get_ficha()->get_tumor()->get_tamanio()->mediano;
+			aux->set_tamanio(mediano);
+			break;
 		case 3:
-			p->get_ficha()->get_tumor()->get_tamanio()->grande;
-
+			aux->set_tamanio(grande);
+			break;
 		default:
 			break;
 		}
@@ -39,40 +53,50 @@ int diagnostico_tumor(){
 		switch (ubicacion)
 		{
 		case 1:
-			p.get_ficha()->get_tumor()->get_ubicacion()->cabeza;
+			aux->set_ubicacion(cabeza);
+			break;
 		case 2:
-			p.get_ficha()->get_tumor()->get_ubicacion()->pulmon;
+			aux->set_ubicacion(pulmon);
+			break;
 		case 3:
-			p.get_ficha()->get_tumor()->get_ubicacion()->cuello;
+			aux->set_ubicacion(cuello);
+			break;
 		case 4:
-			p.get_ficha()->get_tumor()->get_ubicacion()->mama;
+			aux->set_ubicacion(mama);
+			break;
 		case 5:
-			p.get_ficha()->get_tumor()->get_ubicacion()->utero;
+			aux->set_ubicacion(utero);
+			break;
 		case 6:
-			p.get_ficha()->get_tumor()->get_ubicacion()->ojo;
+			aux->set_ubicacion(ojo);
+			break;
 		case 7:
-			p.get_ficha()->get_tumor()->get_ubicacion()->tiroides;
+			aux->set_ubicacion(tiroides);
+			break;
 		case 8:
-			p.get_ficha()->get_tumor()->get_ubicacion()->prostata;
+			aux->set_ubicacion(prostata);
+			break;
 		case 9:
-			p.get_ficha()->get_tumor()->get_ubicacion()->intestino;
+			aux->set_ubicacion(intestino);
+			break;
 
 		default:
 			break;
 		}
 
-		return cantidad_tumores;
+		*p->get_ficha() + aux;  //Se guarda el tumor creado en 
+
+		return tumores;
 	}
 
-		
 
-void frecuencia_semanal();
 
-bool asistencia_sesion() {
+bool asistencia_sesion() 
+{
 
 	int i = 0 + rand() % (2) + 1;
 
-	if (i == 1 ) return true; // si es 1, asistio
+	if (i == 1) return true; // si es 1, asistio
 	else
 		return false;
 
@@ -84,4 +108,4 @@ bool chequeo_alta();
 
 void reevaluar_tratamiento();
 
-cOncologo::~cOncologo(){}; 
+

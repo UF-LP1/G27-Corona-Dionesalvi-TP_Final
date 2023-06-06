@@ -1,24 +1,24 @@
 #pragma once
 
 #include <list>
-
-class cOncologo;
-class cTumor;
+#include "cOncologo.h"
 using namespace std;
 
 class cFicha_paciente
 {
-	cFicha_paciente(cOncologo *oncologo, fecha time_t, list <cTumor> tumor, string tipo_tratamiento);
+public:
+	cFicha_paciente(cOncologo *oncologo, fecha time_t, list <cTumor> tumores, string tipo_tratamiento);
 
+	void operator+(cTumor*tumor);
 	list<cTumor> get_tumor();
 	string get_tipo_tratamiento();
 
 	~cFicha_paciente();
 
 private:
-	cOncologo &oncologo;
+	cOncologo *oncologo;
 	time_t fecha;
-	list<cTumor> tumor;
+	list<cTumor> tumores;
 	string tipo_tratamiento;
  
 };

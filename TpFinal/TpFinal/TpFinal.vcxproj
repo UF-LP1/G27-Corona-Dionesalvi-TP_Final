@@ -130,6 +130,7 @@
     <ClCompile Include="cCentro_radioterapia.cpp" />
     <ClCompile Include="cDosimetrista.cpp" />
     <ClCompile Include="cEmpleado.cpp" />
+    <ClCompile Include="cFecha.cpp" />
     <ClCompile Include="cFicha_paciente.cpp" />
     <ClCompile Include="cOncologo.cpp" />
     <ClCompile Include="cPaciente.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="cCentro_radioterapia.h" />
     <ClInclude Include="cDosimetrista.h" />
     <ClInclude Include="cEmpleado.h" />
+    <ClInclude Include="cFecha.h" />
     <ClInclude Include="cFicha_paciente.h" />
     <ClInclude Include="cOncologo.h" />
     <ClInclude Include="cPaciente.h" />
