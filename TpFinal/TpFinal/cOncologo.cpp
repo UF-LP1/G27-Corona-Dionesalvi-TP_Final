@@ -1,5 +1,5 @@
 #include "cOncologo.h"
-//#include "cPaciente.h" // no se si va
+
 
 
 cOncologo::cOncologo(string especialidad_cancer,string matricula):cEmpleado(matricula)
@@ -19,20 +19,20 @@ list<cTumor> diagnostico_tumor(){
 
 	cFicha_paciente *ficha;
 	cPaciente* p = new cPaciente("Martin", "32134575", "femenino", "1168756578", "A++", 80, ficha);
-	//cTumor* tumor = new cTumor(pequenio, cabeza, 30);
 	list<cTumor> tumores;
 
 	
 	srand(time(0));
-	int cantidad_tumores = 0 + rand() % (7) + 1;  //Primero calcula cuantos tumores tiene el paciente
+	int cantidad_tumores = 0 + rand() % (6) + 1;  //Primero calcula cuantos tumores tiene el paciente
 	int tamanio = 0;
 	int ubicacion = 0;
 
 	for (int i = 0; i < cantidad_tumores; i++) {
-		
+
 		tamanio = 0 + rand() % (3) + 1; //Calcula tantos tamanios dependiendo la cantidad de tumores
 		ubicacion = 0 + rand() % (9) + 1;
-		cTumor* aux = new cTumor(pequenio, cabeza, 0);
+		cTumor* aux = new cTumor(pequenio, cabeza, 0); //HAY QUE HACER DELETE?
+
 
 
 		switch (tamanio)
@@ -84,15 +84,14 @@ list<cTumor> diagnostico_tumor(){
 			break;
 		}
 
-		*p->get_ficha() + aux;  //Se guarda el tumor creado en 
+		*p->get_ficha() + aux;  //Se guarda el tumor creado con rand en la lista de tumores que tiene c/ paciente en su ficha
 
 		return tumores;
-	}
+	};
 
 
 
-bool asistencia_sesion() 
-{
+bool asistencia_sesion() {
 
 	int i = 0 + rand() % (2) + 1;
 

@@ -23,7 +23,8 @@ public:
 	void buscar_paciente_en_tratamiento();
 	void sacar_paciente();
 	void agregar_paciente();
-
+	void operator+(cPaciente* paciente);
+	void operator-(cPaciente* paciente);
 	~cCentro_radioterapia();
 
 private: 

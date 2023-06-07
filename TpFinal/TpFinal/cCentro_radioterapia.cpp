@@ -9,12 +9,24 @@ cCentro_radioterapia::cCentro_radioterapia(string direccion, list<cPaciente> *pa
 
 void contactar_paciente();
 
-void buscar_paciente_limite_radiacion();
+void buscar_paciente_limite_radiacion() {
+
+
+};
 
 void buscar_paciente_en_tratamiento();
 
 void sacar_paciente();
 
 void agregar_paciente();
+
+void cCentro_radioterapia::operator+(cPaciente* paciente) {
+	pacientes->push_back(*paciente);
+
+};
+
+void cCentro_radioterapia::operator-(cPaciente* paciente) {
+	pacientes->remove(*paciente);
+};
 
 cCentro_radioterapia::~cCentro_radioterapia(){};
