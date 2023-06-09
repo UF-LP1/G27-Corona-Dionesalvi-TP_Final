@@ -15,7 +15,7 @@ void cOncologo::frecuencia_semanal()
 
 double cOncologo::calculo_dosis() {}
 
-list<cTumor> diagnostico_tumor(cPaciente *p) {
+list<cTumor> diagnostico_tumor(cPaciente *p) { //Se determinan las caracteristicas por cada tumor 
 
 	cFicha_paciente* ficha;
 	list<cTumor> tumores;

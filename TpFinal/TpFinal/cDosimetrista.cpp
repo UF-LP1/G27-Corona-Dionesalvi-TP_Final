@@ -5,7 +5,23 @@ cDosimetrista::cDosimetrista(string nombre, string matricula): cEmpleado(matricu
 	this->nombre = nombre;
 }
 
-double calculo_dosis();
+double calculo_dosis(cPaciente*paciente) {
+	srand(time(0));
+	string a = paciente->get_ficha()->get_tipo_tratamiento();
+	if ("radioterapia de haz externo" == a) {
+		float b = 0 + rand() % (10) + 1;
+		paciente->get_ficha()->set_radiacion_total(b);
+	}
+	else if ("braquiterapia" == a) {
+		float c = 100 + rand() % (161 - 100) + 1;
+		paciente->get_ficha()->set_radiacion_total(c);
+	}
+	else if ("radioterapia sistemica" == a) {
+		float c = 20 + rand() % (41 - 20) + 1; //calculo dosis total entre 20 - 40 Gy
+		paciente->get_ficha()->set_radiacion_total(c);
+	}
+
+};
 
 void tipo_terapia_a_recibir(cPaciente *paciente){
 	

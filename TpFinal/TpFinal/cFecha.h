@@ -7,7 +7,6 @@
 using namespace std;
 
 class cFecha
-
 {
 public:
 	cFecha(int dia, int mes, int anio);
