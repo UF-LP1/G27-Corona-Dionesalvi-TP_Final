@@ -15,13 +15,12 @@ void cOncologo::frecuencia_semanal()
 
 double cOncologo::calculo_dosis() {}
 
-list<cTumor> diagnostico_tumor(){
+list<cTumor> diagnostico_tumor(cPaciente *p) {
 
-	cFicha_paciente *ficha;
-	cPaciente* p = new cPaciente("Martin", "32134575", "femenino", "1168756578", "A++", 80, ficha);
+	cFicha_paciente* ficha;
 	list<cTumor> tumores;
 
-	
+
 	srand(time(0));
 	int cantidad_tumores = 0 + rand() % (6) + 1;  //Primero calcula cuantos tumores tiene el paciente
 	int tamanio = 0;
@@ -87,7 +86,8 @@ list<cTumor> diagnostico_tumor(){
 		*p->get_ficha() + aux;  //Se guarda el tumor creado con rand en la lista de tumores que tiene c/ paciente en su ficha
 
 		return tumores;
-	};
+	}
+};
 
 
 
