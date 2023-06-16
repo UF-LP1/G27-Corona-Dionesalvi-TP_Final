@@ -25,7 +25,7 @@ void cCentro_radioterapia::derivar_paciente(cPaciente* paciente) {
 			cEmpleado* aux2 = (*it_); 
 			cDosimetrista* aux = dynamic_cast<cDosimetrista*>(aux2);
 			if (aux != nullptr)
-				aux->tipo_terapia_a_recibir();
+				aux->tipo_terapia_a_recibir(paciente);
 		}
 
 }
