@@ -9,9 +9,9 @@ using namespace std;
 class cFicha_paciente
 {
 public:
-	cFicha_paciente(cOncologo *oncologo,  cFecha fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total);
+	cFicha_paciente(cOncologo *oncologo,  cFecha fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento);
 
-	void operator+(cTumor*tumor);
+	void operator+(cTumor* tumor);
 	void operator-(cTumor* tumor);
 	list<cTumor*> get_tumor();
 	list<string*> get_tipo_tratamiento();
@@ -26,6 +26,8 @@ private:
 	list<cTumor*> tumores;
 	list<string*> tipo_tratamiento;
 	float radiacion_total;
-
+	string DNI;
+	int frecuencia_semanal_tratamiento;
+	float radiacion_total;
 };
 

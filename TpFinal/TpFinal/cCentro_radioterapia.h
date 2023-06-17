@@ -3,8 +3,6 @@
 #define _CCENTRO_RADIOTERAPIA_H
 
 #include <list>
-//#include <string>
-
 #include "cPaciente.h"
 #include "cDosimetrista.h"
 

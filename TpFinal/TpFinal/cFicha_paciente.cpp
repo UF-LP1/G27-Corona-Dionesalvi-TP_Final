@@ -1,10 +1,12 @@
 #include "cFicha_paciente.h"
 
-cFicha_paciente::cFicha_paciente(cOncologo* oncologo,  cFecha fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total) {
+cFicha_paciente::cFicha_paciente(cOncologo* oncologo,  cFecha fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento): DNI(DNI) {
 	this->oncologo = oncologo;
 	this->fecha = fecha;
 	this->tumores = tumores;
 	this->tipo_tratamiento = tipo_tratamiento;
+	this->frecuencia_semanal_tratamiento = frecuencia_semanal_tratamiento;
+	this->radiacion_total = radiacion_total;
 };
 
 void cFicha_paciente::operator+(cTumor* tumor) {
@@ -27,12 +29,7 @@ void cFicha_paciente::agregar_tratamiento(string tratamiento) {
 	 
 	this->tipo_tratamiento.push_back(&tratamiento);
 
-
 };
-
-//void cFicha_paciente::set_tipo_tratamiento(string tratamiento) {
-	//this->tipo_tratamiento = tratamiento;
-//};
 
 list<string*> cFicha_paciente::get_tipo_tratamiento()
 {
@@ -44,7 +41,5 @@ void cFicha_paciente::set_radiacion_total(float radiacion) {
 	this->radiacion_total;
 
 };
-
-
 
 cFicha_paciente::~cFicha_paciente(){};

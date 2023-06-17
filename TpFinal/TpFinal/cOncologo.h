@@ -10,6 +10,7 @@ class cOncologo : public cEmpleado
 {
 public:
 	cOncologo(string especialidad_cancer, string matricula);
+
 	void frecuencia_semanal();
 	double calculo_dosis();
 	list <cTumor> diagnostico_tumor(cPaciente *p);

@@ -20,7 +20,7 @@ public:
 private:
 	eTamanio tamanio;
 	eUbicacion ubicacion;
-	double radiacion_acum;
+	float radiacion_acum;
 
 };
 

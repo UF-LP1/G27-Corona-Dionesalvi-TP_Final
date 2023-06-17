@@ -5,6 +5,7 @@
 
 #include "cEmpleado.h"
 #include "eUbicacion.h"
+
 class cDosimetrista : public cEmpleado
 {
 public:
