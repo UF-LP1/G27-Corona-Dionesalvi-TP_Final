@@ -1,7 +1,6 @@
 #include "cOncologo.h"
 
 
-
 cOncologo::cOncologo(string especialidad_cancer,string matricula):cEmpleado(matricula)
 {
 	this->especialidad_cancer = especialidad_cancer;
@@ -13,13 +12,39 @@ void cOncologo::frecuencia_semanal()
 {
 }
 
-double cOncologo::calculo_dosis() {}
+double cOncologo::calculo_dosis(cFicha_paciente* ficha) { //DOSIS POR SESION
 
-list<cTumor> diagnostico_tumor(cPaciente *p) { //Se determinan las caracteristicas por cada tumor 
+	float a = ficha->get_radiacion_total();
+	float b = ficha->get_radiacion_por_sesion();
 
-	cFicha_paciente* ficha;
+	if (a >= 1 && a <= 10) { //si varia entre estos nros es radioterapia de haz externo. dosis por sesion entre 1-2
+		if (((int)a % 2) == 0) { //si la dosis total es par
+			ficha->set_radiacion_por_sesion(2.0); //seteo radiacion por sesion en 2
+			ficha->set_frecuencia_semanal_tratamiento(a/b); //la frecuencia con la que va a ir depende de la division a/b
+		}
+		else {
+			ficha->set_radiacion_por_sesion(1.0); //si es impar, le doy 1 Gy por sesion y lo hago ir esas determinadas veces
+			ficha->set_frecuencia_semanal_tratamiento(a);
+		}
+	}
+
+	if (a >= 100 && a <= 160) //si varia entre estos nros es braquiterapia. dosis por sesion entre 6-8
+	{
+
+
+
+	}
+
+	if (a >= 20 && a <= 40) //si varia entre estos nros es radioterapia sistemica. dosis por sesion entre 2-4
+	{
+
+	}
+
+}
+
+list<cTumor> cOncologo::diagnostico_tumor(cPaciente *p) { //Se determinan las caracteristicas por cada tumor 
+
 	list<cTumor> tumores;
-
 
 	srand(time(0));
 	int cantidad_tumores = 0 + rand() % (6) + 1;  //Primero calcula cuantos tumores tiene el paciente
@@ -31,8 +56,6 @@ list<cTumor> diagnostico_tumor(cPaciente *p) { //Se determinan las caracteristic
 		tamanio = 0 + rand() % (3) + 1; //Calcula tantos tamanios dependiendo la cantidad de tumores
 		ubicacion = 0 + rand() % (9) + 1;
 		cTumor* aux = new cTumor(pequenio, cabeza, 0); //HAY QUE HACER DELETE?
-
-
 
 		switch (tamanio)
 		{
@@ -89,9 +112,7 @@ list<cTumor> diagnostico_tumor(cPaciente *p) { //Se determinan las caracteristic
 	}
 };
 
-
-
-bool asistencia_sesion() {
+bool cOncologo::asistencia_sesion() {
 
 	int i = 0 + rand() % (2) + 1;
 
@@ -101,10 +122,16 @@ bool asistencia_sesion() {
 
 };
 
-void actualizar_ficha(cFicha_paciente *f);
+void cOncologo::actualizar_ficha(cFicha_paciente* f) {
 
-bool chequeo_alta();
+};
 
-void reevaluar_tratamiento();
+bool cOncologo::chequeo_alta() {
+
+};
+
+void cOncologo::reevaluar_tratamiento(){
+
+};
 
 

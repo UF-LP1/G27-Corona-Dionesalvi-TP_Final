@@ -12,7 +12,7 @@ public:
 	cOncologo(string especialidad_cancer, string matricula);
 
 	void frecuencia_semanal();
-	double calculo_dosis();
+	double calculo_dosis(cFicha_paciente * ficha);
 	list <cTumor> diagnostico_tumor(cPaciente *p);
 	bool asistencia_sesion();
 	void actualizar_ficha(cFicha_paciente*f);

@@ -5,7 +5,7 @@ cDosimetrista::cDosimetrista(string nombre, string matricula): cEmpleado(matricu
 	this->nombre = nombre;
 }
 
-double calculo_dosis(cPaciente*paciente) {
+double calculo_dosis(cPaciente*paciente) { //DOSIS TOTAL
 	srand(time(0));
 	list<string*> a = paciente->get_ficha()->get_tipo_tratamiento();
 
@@ -46,7 +46,6 @@ double calculo_dosis(cPaciente*paciente) {
 };
 
 void tipo_terapia_a_recibir(cPaciente *paciente){
-	
 
 	list<cTumor*> b = paciente->get_ficha()->get_tumor(); //Guardo la lista de tumores q tiene
 
