@@ -1,22 +1,20 @@
 #pragma once
 #include <string>
-#include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
-#include <sstream>
+#include <ctime>
+
 using namespace std;
 
 class cFecha
 {
+private:
+	tm fecha;
+
 public:
+	cFecha();
 	cFecha(int dia, int mes, int anio);
 	string get_fecha();
-	ostream& operator<<(ostream& out, cFecha& fecha);
+	void SetNow();
 	~cFecha();
-
-private:
-	int dia;
-	int mes;
-	int anio;
 };
-

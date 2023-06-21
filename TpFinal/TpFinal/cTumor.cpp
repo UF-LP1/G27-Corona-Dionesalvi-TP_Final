@@ -14,10 +14,12 @@ eTamanio cTumor::get_tamanio() {
 eUbicacion cTumor::get_ubicacion() {
 	return this->ubicacion;
 };
-void cTumor :: set_tamanio(eTamanio tamanio) {
+
+void cTumor::set_tamanio(eTamanio tamanio) {
 	this->tamanio = tamanio;
 }
-void cTumor:: set_ubicacion(eUbicacion ubicacion) {
+
+void cTumor::set_ubicacion(eUbicacion ubicacion) {
 	this->ubicacion = ubicacion;
 }
 

@@ -5,13 +5,17 @@ cPaciente::cPaciente(string nombre, string DNI, string sexo, string tel_contacto
 	this->sexo = sexo;
 	this->tel_contacto = tel_contacto;
 	this->porcentaje_salud = porcentaje_salud;
-	this->ficha = ficha; 
+	this->ficha = ficha;
 };
 
-
- cFicha_paciente* cPaciente::get_ficha() {
+cFicha_paciente* cPaciente::get_ficha() {
 	return this->ficha;
+}
 
+string cPaciente::get_DNI()
+{
+	return this->DNI;
 };
 
- cPaciente::~cPaciente(){};
+cPaciente::~cPaciente() {
+};

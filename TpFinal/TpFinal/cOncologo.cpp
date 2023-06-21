@@ -1,15 +1,10 @@
 #include "cOncologo.h"
+#include "cPaciente.h"
+#include "cFicha_paciente.h"
 
-
-cOncologo::cOncologo(string especialidad_cancer,string matricula):cEmpleado(matricula)
+cOncologo::cOncologo(string especialidad_cancer, string matricula) :cEmpleado(matricula)
 {
 	this->especialidad_cancer = especialidad_cancer;
-}
-
-cOncologo::~cOncologo() {}
-
-void cOncologo::frecuencia_semanal()
-{
 }
 
 double cOncologo::calculo_dosis(cFicha_paciente* ficha) { //DOSIS POR SESION
@@ -20,7 +15,7 @@ double cOncologo::calculo_dosis(cFicha_paciente* ficha) { //DOSIS POR SESION
 	if (a >= 1 && a <= 10) { //si varia entre estos nros es radioterapia de haz externo. dosis por sesion entre 1-2
 		if (((int)a % 2) == 0) { //si la dosis total es par
 			ficha->set_radiacion_por_sesion(2.0); //seteo radiacion por sesion en 2
-			ficha->set_frecuencia_semanal_tratamiento(a/b); //la frecuencia con la que va a ir depende de la division a/b
+			ficha->set_frecuencia_semanal_tratamiento(a / b); //la frecuencia con la que va a ir depende de la division a/b
 		}
 		else {
 			ficha->set_radiacion_por_sesion(1.0); //si es impar, le doy 1 Gy por sesion y lo hago ir esas determinadas veces
@@ -39,10 +34,10 @@ double cOncologo::calculo_dosis(cFicha_paciente* ficha) { //DOSIS POR SESION
 	{
 
 	}
-
+	return 0;
 }
 
-list<cTumor> cOncologo::diagnostico_tumor(cPaciente *p) { //Se determinan las caracteristicas por cada tumor 
+list<cTumor> cOncologo::diagnostico_tumor(cPaciente* p) { //Se determinan las caracteristicas por cada tumor 
 
 	list<cTumor> tumores;
 
@@ -107,7 +102,7 @@ list<cTumor> cOncologo::diagnostico_tumor(cPaciente *p) { //Se determinan las ca
 		}
 
 		*p->get_ficha() + aux;  //Se guarda el tumor creado con rand en la lista de tumores que tiene c/ paciente en su ficha
-
+		p->get_ficha()->agregar_fecha(new cFecha()); //actualizamos la fecha de atencion del paciente
 		return tumores;
 	}
 };
@@ -122,16 +117,10 @@ bool cOncologo::asistencia_sesion() {
 
 };
 
-void cOncologo::actualizar_ficha(cFicha_paciente* f) {
+bool cOncologo::chequeo_alta() { return true; };
 
-};
+void cOncologo::reevaluar_tratamiento() {};
 
-bool cOncologo::chequeo_alta() {
-
-};
-
-void cOncologo::reevaluar_tratamiento(){
-
-};
+cOncologo::~cOncologo() {}
 
 

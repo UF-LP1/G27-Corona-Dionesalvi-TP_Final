@@ -8,25 +8,25 @@
 
 
 using namespace std;
-
+class cOncologo;
 class cCentro_radioterapia
 
 {
 public:
-	
-	cCentro_radioterapia(string direccion, list<cPaciente*> pacientes,list <cEmpleado*> empleados);
-	
+
+	cCentro_radioterapia(string direccion, list<cPaciente*> pacientes, list <cEmpleado*> empleados);
+
 	void contactar_paciente();
 	void derivar_paciente(cPaciente* paciente);
 	void buscar_paciente_limite_radiacion();
 	void buscar_paciente_en_tratamiento();
-	void sacar_paciente(cPaciente *paciente);
+	void sacar_paciente(cPaciente* paciente);
 	void agregar_paciente(cPaciente* paciente);
 	void operator+(cPaciente* paciente);
 	void operator-(cPaciente* paciente);
 	~cCentro_radioterapia();
 
-private: 
+private:
 	string direccion;
 	list <cPaciente*> pacientes;
 	list <cEmpleado*> empleados;

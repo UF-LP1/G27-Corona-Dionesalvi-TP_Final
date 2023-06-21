@@ -23,4 +23,3 @@ private:
 	float radiacion_acum;
 
 };
-

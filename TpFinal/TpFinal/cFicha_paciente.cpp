@@ -1,6 +1,8 @@
 #include "cFicha_paciente.h"
+#include "cOncologo.h"
+#include "cPaciente.h"
 
-cFicha_paciente::cFicha_paciente(cOncologo* oncologo,  cFecha fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento, float radiacion_por_sesion): DNI(DNI) {
+cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento, float radiacion_por_sesion) : DNI(DNI) {
 	this->oncologo = oncologo;
 	this->fecha = fecha;
 	this->tumores = tumores;
@@ -8,28 +10,43 @@ cFicha_paciente::cFicha_paciente(cOncologo* oncologo,  cFecha fecha, list <cTumo
 	this->frecuencia_semanal_tratamiento = frecuencia_semanal_tratamiento;
 	this->radiacion_total = radiacion_total;
 	this->radiacion_por_sesion = radiacion_por_sesion;
+}
+cFicha_paciente::cFicha_paciente(cPaciente* paciente, cOncologo* oncologo)
+{
+	this->oncologo = oncologo;
+	this->fecha.push_back(new cFecha());
+	this->frecuencia_semanal_tratamiento = 0;
+	this->radiacion_por_sesion = 0;
+	this->radiacion_total = 0;
+	this->DNI = paciente->get_DNI();
+
 };
 
 void cFicha_paciente::operator+(cTumor* tumor) {
 
-	this->tumores.push_back(tumor); //Sobrecarga del operador + para que agregue un tumor al final de la lista
+	tumores.push_back(tumor); //Sobrecarga del operador + para que agregue un tumor al final de la lista
 
 }
 
 void cFicha_paciente::operator-(cTumor* tumor) {
 
-	this->tumores.remove(tumor); //Sobrecarga del operador - para que elimine un tumor de la lista
+	tumores.remove(tumor); //Sobrecarga del operador - para que elimine un tumor de la lista
+
 };
 
 list<cTumor*> cFicha_paciente::get_tumor() {
 	return this->tumores;
-
 };
 
 void cFicha_paciente::agregar_tratamiento(string tratamiento) {
-	 
+
 	this->tipo_tratamiento.push_back(&tratamiento);
 
+}
+
+void cFicha_paciente::agregar_fecha(cFecha* fecha)
+{
+	this->fecha.push_back(fecha);
 };
 
 list<string*> cFicha_paciente::get_tipo_tratamiento()
@@ -53,11 +70,11 @@ float cFicha_paciente::get_radiacion_por_sesion() {
 }
 
 float cFicha_paciente::set_radiacion_por_sesion(float radiacion) {
-	this->radiacion_por_sesion = radiacion;
+	return this->radiacion_por_sesion = radiacion;
 }
 
 int cFicha_paciente::set_frecuencia_semanal_tratamiento(int frecuencia) {
-	this->frecuencia_semanal_tratamiento = frecuencia;
+	return this->frecuencia_semanal_tratamiento = frecuencia;
 
 }
 
@@ -66,4 +83,4 @@ void cFicha_paciente::get_frecuencia_semanal_tratamiento() {
 	this->frecuencia_semanal_tratamiento;
 };
 
-cFicha_paciente::~cFicha_paciente(){};
+cFicha_paciente::~cFicha_paciente() {};

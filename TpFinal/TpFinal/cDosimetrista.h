@@ -4,7 +4,6 @@
 
 
 #include "cEmpleado.h"
-#include "eUbicacion.h"
 
 class cDosimetrista : public cEmpleado
 {
@@ -12,7 +11,7 @@ public:
 	cDosimetrista(string nombre, string matricula);
 
 	double calculo_dosis(cPaciente* paciente);
-	void tipo_terapia_a_recibir(cPaciente *paciente);
+	void tipo_terapia_a_recibir(cPaciente* paciente);
 	~cDosimetrista();
 
 private:

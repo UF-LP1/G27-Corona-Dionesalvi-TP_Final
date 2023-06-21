@@ -13,16 +13,17 @@ public:
 	void tratamiento();
 
 	cFicha_paciente* get_ficha();
+	string get_DNI();
 
 	~cPaciente();
 
 private:
 	string nombre;
 	const string DNI;
-	string sexo; 
+	string sexo;
 	string tel_contacto;
 	const string tipo_sangre;
 	double porcentaje_salud;
-	cFicha_paciente *ficha;
+	cFicha_paciente* ficha;
 };
 
