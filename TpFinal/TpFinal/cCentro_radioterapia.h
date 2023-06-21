@@ -18,8 +18,8 @@ public:
 
 	void contactar_paciente();
 	void derivar_paciente(cPaciente* paciente);
-	void buscar_paciente_limite_radiacion();
-	void buscar_paciente_en_tratamiento();
+	list<cPaciente*> buscar_paciente_limite_radiacion(list<cPaciente*> paciente);
+	list<cPaciente*> buscar_paciente_en_tratamiento(list<cPaciente*> paciente, eUbicacion ubitumor,string tipotrat);
 	void sacar_paciente(cPaciente* paciente);
 	void agregar_paciente(cPaciente* paciente);
 	void operator+(cPaciente* paciente);
