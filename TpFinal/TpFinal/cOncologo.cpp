@@ -25,15 +25,30 @@ double cOncologo::calculo_dosis(cFicha_paciente* ficha) { //DOSIS POR SESION
 
 	if (a >= 100 && a <= 160) //si varia entre estos nros es braquiterapia. dosis por sesion entre 6-8
 	{
+		if (((int)a % 6) == 0) {
+			ficha->set_radiacion_por_sesion(6.0);
+			ficha->set_frecuencia_semanal_tratamiento(a / b);
+		}
+		else if (((int)a % 7) == 0) {
+			ficha->set_radiacion_por_sesion(7.0);
+			ficha->set_frecuencia_semanal_tratamiento(a / b);
+		}
+		else if (((int)a % 8) == 0) {
+			ficha->set_radiacion_por_sesion(8.0);
+			ficha->set_frecuencia_semanal_tratamiento(a / b);
 
-
-
+		}
 	}
 
 	if (a >= 20 && a <= 40) //si varia entre estos nros es radioterapia sistemica. dosis por sesion entre 2-4
 	{
+		if (((int)a % 2) == 0) {
+			ficha->set_radiacion_por_sesion(2.0); 
+			ficha->set_frecuencia_semanal_tratamiento(a / b);
+		}
 
 	}
+
 	return 0;
 }
 
@@ -41,7 +56,7 @@ list<cTumor> cOncologo::diagnostico_tumor(cPaciente* p) { //Se determinan las ca
 
 	list<cTumor> tumores;
 
-	srand(time(0));
+	srand(time(0)); //semilla respecto a la hora de tu computadora. como la hora se actualiza, el random cambia
 	int cantidad_tumores = 0 + rand() % (6) + 1;  //Primero calcula cuantos tumores tiene el paciente
 	int tamanio = 0;
 	int ubicacion = 0;
@@ -50,7 +65,7 @@ list<cTumor> cOncologo::diagnostico_tumor(cPaciente* p) { //Se determinan las ca
 
 		tamanio = 0 + rand() % (3) + 1; //Calcula tantos tamanios dependiendo la cantidad de tumores
 		ubicacion = 0 + rand() % (9) + 1;
-		cTumor* aux = new cTumor(pequenio, cabeza, 0); //HAY QUE HACER DELETE?
+		cTumor* aux = new cTumor(pequenio, cabeza, 0);
 
 		switch (tamanio)
 		{
@@ -109,17 +124,16 @@ list<cTumor> cOncologo::diagnostico_tumor(cPaciente* p) { //Se determinan las ca
 
 bool cOncologo::asistencia_sesion(cFicha_paciente * f, cFecha* e) {
 
-	/*list<cFecha*> b = f->get_fechas(); //guardo las fechas que el paciente tiene en su ficha
-		cFecha a = cFecha(); //me guardo la fecha actual
+	list<cFecha*> b = f->get_fechas(); //guardo las fechas que el paciente tiene en su ficha
+		cFecha *a = new cFecha(); //me guardo la fecha actual
 	for (list<cFecha*>::iterator it = b.begin(); it != b.end(); it++) {
 		cFecha* aux2 = (*it);
 		if (a == aux2) {
-
+			return true;
 		}
-
-
-	}*/
-	return true;
+		else 
+			return false;
+	}
 };
 
 bool cOncologo::chequeo_alta() { return true; };

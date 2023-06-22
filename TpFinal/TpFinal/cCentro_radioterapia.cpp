@@ -19,10 +19,8 @@ void cCentro_radioterapia::derivar_paciente(cPaciente* paciente) {
 		for (list<cEmpleado*>::iterator it_ = empleados.begin(); it_ != empleados.end(); it_++) {  //bucle hasta el final de la lista 
 			cEmpleado* aux2 = (*it_); //accedo a un elemento tipo cEmpleado, y con el & accedo a la direc de memoria
 			cOncologo* aux = dynamic_cast<cOncologo*>(aux2); //si es empleado, chequeo que sea oncologo
-			//falta en caso de no tener una ficha crearsela
-			//if (aux != nullptr)
-			   // cFicha_paciente* f_new = new cFicha_paciente(paciente,aux);//creamos la ficha del paciente nuevo y le asignamos un Oncologo
-				//aux->diagnostico_tumor(paciente);
+			if (aux != nullptr) //chequeo que sea distinto de nullptr pq dynamic cast si no encuentra un empleado oncologo me devuelve un ptr nulo
+				aux->diagnostico_tumor(paciente);
 		}
 	}
 	else
@@ -32,7 +30,6 @@ void cCentro_radioterapia::derivar_paciente(cPaciente* paciente) {
 			if (aux != nullptr)
 				aux->tipo_terapia_a_recibir(paciente);
 		}
-
 }
 
 list<cPaciente*>buscar_paciente_limite_radiacion(list<cPaciente*> paciente) { //metodo friend, no requiere operador de ambito
