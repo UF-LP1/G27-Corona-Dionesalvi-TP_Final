@@ -2,40 +2,41 @@
 #include "cPaciente.h"
 #include "cFicha_paciente.h"
 
-cOncologo::cOncologo(string especialidad_cancer, string matricula) :cEmpleado(matricula)
+cOncologo::cOncologo(string especialidad_cancer, string DNI, string matricula):cEmpleado(matricula)
 {
 	this->especialidad_cancer = especialidad_cancer;
+	this->DNI_ = DNI;
 }
 
-double cOncologo::calculo_dosis(cFicha_paciente* ficha) { //DOSIS POR SESION
+double cOncologo::calculo_dosis(cPaciente * paciente) { //DOSIS POR SESION
 
-	float a = ficha->get_radiacion_total();
-	float b = ficha->get_radiacion_por_sesion();
+	float a = paciente->get_ficha()->get_radiacion_total();
+	float b = paciente->get_ficha()->get_radiacion_por_sesion();
 
 	if (a >= 1 && a <= 10) { //si varia entre estos nros es radioterapia de haz externo. dosis por sesion entre 1-2
 		if (((int)a % 2) == 0) { //si la dosis total es par
-			ficha->set_radiacion_por_sesion(2.0); //seteo radiacion por sesion en 2
-			ficha->set_frecuencia_semanal_tratamiento(a / b); //la frecuencia con la que va a ir depende de la division a/b
+			paciente->get_ficha()->set_radiacion_por_sesion(2.0); //seteo radiacion por sesion en 2
+			paciente->get_ficha()->set_frecuencia_semanal_tratamiento(a / b); //la frecuencia con la que va a ir depende de la division a/b
 		}
 		else {
-			ficha->set_radiacion_por_sesion(1.0); //si es impar, le doy 1 Gy por sesion y lo hago ir esas determinadas veces
-			ficha->set_frecuencia_semanal_tratamiento(a);
+			paciente->get_ficha()->set_radiacion_por_sesion(1.0); //si es impar, le doy 1 Gy por sesion y lo hago ir esas determinadas veces
+			paciente->get_ficha()->set_frecuencia_semanal_tratamiento(a);
 		}
 	}
 
 	if (a >= 100 && a <= 160) //si varia entre estos nros es braquiterapia. dosis por sesion entre 6-8
 	{
 		if (((int)a % 6) == 0) {
-			ficha->set_radiacion_por_sesion(6.0);
-			ficha->set_frecuencia_semanal_tratamiento(a / b);
+			paciente->get_ficha()->set_radiacion_por_sesion(6.0);
+			paciente->get_ficha()->set_frecuencia_semanal_tratamiento(a / b);
 		}
 		else if (((int)a % 7) == 0) {
-			ficha->set_radiacion_por_sesion(7.0);
-			ficha->set_frecuencia_semanal_tratamiento(a / b);
+			paciente->get_ficha()->set_radiacion_por_sesion(7.0);
+			paciente->get_ficha()->set_frecuencia_semanal_tratamiento(a / b);
 		}
 		else if (((int)a % 8) == 0) {
-			ficha->set_radiacion_por_sesion(8.0);
-			ficha->set_frecuencia_semanal_tratamiento(a / b);
+			paciente->get_ficha()->set_radiacion_por_sesion(8.0);
+			paciente->get_ficha()->set_frecuencia_semanal_tratamiento(a / b);
 
 		}
 	}
@@ -43,8 +44,8 @@ double cOncologo::calculo_dosis(cFicha_paciente* ficha) { //DOSIS POR SESION
 	if (a >= 20 && a <= 40) //si varia entre estos nros es radioterapia sistemica. dosis por sesion entre 2-4
 	{
 		if (((int)a % 2) == 0) {
-			ficha->set_radiacion_por_sesion(2.0); 
-			ficha->set_frecuencia_semanal_tratamiento(a / b);
+			paciente->get_ficha()->set_radiacion_por_sesion(2.0);
+			paciente->get_ficha()->set_frecuencia_semanal_tratamiento(a / b);
 		}
 
 	}
@@ -129,6 +130,7 @@ bool cOncologo::asistencia_sesion(cFicha_paciente * f, cFecha* e) {
 	for (list<cFecha*>::iterator it = b.begin(); it != b.end(); it++) {
 		cFecha* aux2 = (*it);
 		if (aux2 == &a) { //utilizo sobrecarga del == en cFecha
+
 			return true;
 		}
 		else 
@@ -151,6 +153,11 @@ bool cOncologo::chequeo_alta(cPaciente * p) {
 		return false;
 	}
 	};
+
+string cOncologo::get_DNI() {
+
+	return this->DNI_;
+}
 
 cOncologo::~cOncologo() {}
 

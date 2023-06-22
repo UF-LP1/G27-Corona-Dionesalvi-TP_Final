@@ -28,4 +28,10 @@ float cTumor::get_radiacion_acum()
 	return radiacion_acum;
 }
 
+void cTumor::set_radiacion_acum(float radiacion) {
+	this->radiacion_acum = radiacion;
+
+}
+
+
 cTumor::~cTumor() {};

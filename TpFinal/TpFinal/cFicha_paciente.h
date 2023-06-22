@@ -29,6 +29,7 @@ public:
 	list<cFecha*>get_fechas();
 	void set_estado_tratamiento(string estado);
 	string get_estado_tratamiento();
+	cOncologo* get_Oncologo();
 
 	~cFicha_paciente();
 

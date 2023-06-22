@@ -61,22 +61,20 @@ list<cPaciente*>cCentro_radioterapia :: buscar_paciente_limite_radiacion() { //m
 	return pacientes_radiacion;
 }; 
 
-list<cPaciente*> cCentro_radioterapia::buscar_paciente_en_tratamiento(list<cPaciente*> paciente,eUbicacion ubitumor,string tipotrat) //recibo una lista de pac 
+list<cPaciente*> cCentro_radioterapia::buscar_paciente_en_tratamiento(list<cPaciente*> paciente,eUbicacion ubitumor,string* tipotrat) //recibo una lista de pac 
 {	
 	list<cPaciente*> pacientesfiltrados;
 	for (list<cPaciente*>::iterator it_ = paciente.begin(); it_ != paciente.end(); it_++)
 	{
 		bool flag = false;
 		cPaciente* aux2 = (*it_);
-		for (list<cTumor*>::iterator ti_ = aux2->get_ficha()->get_tumor().begin(); ti_ != aux2->get_ficha()->get_tumor().end(); ti_++)
+		for (list<cTumor*>::iterator ti_ = aux2->get_ficha()->get_tumor().begin(); ti_ != aux2->get_ficha()->get_tumor().end(); ti_++) //BUSCA POR UBICACION
 		{
-			
 			cTumor* tumorcito = (*ti_);
 			if ( tumorcito->get_ubicacion() == ubitumor)
 			{
 				flag = true;
 			}
-			
 		}
 		if (flag == true)
 		{
@@ -84,20 +82,17 @@ list<cPaciente*> cCentro_radioterapia::buscar_paciente_en_tratamiento(list<cPaci
 		}
 	}
 
-
-
-
 	list<cPaciente*>pacientesfiltradosfinal;
+
 	for (list<cPaciente*> ::iterator it_ = pacientesfiltrados.begin(); it_ != pacientesfiltrados.end(); it_++)
 	{
 		cPaciente* aux2 = (*it_);
-		bool flag;
-		for (list<string*>::iterator ti_ = aux2->get_ficha()->get_tipo_tratamiento().begin(); ti_ != aux2->get_ficha()->get_tipo_tratamiento().end(); ti_++)
-		{
+		bool flag = false;
 
-			string* ubicacion = (*ti_);
-			
-			//if (ubicacion == ubitumor) arreglar esta lista no puedo comparar un string con string*
+		for (list<string*>::iterator ti_ = aux2->get_ficha()->get_tipo_tratamiento().begin(); ti_ != aux2->get_ficha()->get_tipo_tratamiento().end(); ti_++) //BUSCA POR TRATAMIENTO
+		{
+			string* tratamiento = (*ti_);
+			if (tratamiento == tipotrat) 
 			{
 				flag = true;
 			}
@@ -132,8 +127,18 @@ void cCentro_radioterapia::operator+(cPaciente* paciente) {
 void cCentro_radioterapia::operator-(cPaciente* paciente) {
 	this->sacar_paciente(paciente);
 
-};
+}
 
+ostream& cCentro_radioterapia::operator<<(ostream& out)
+{
+	for (list<cPaciente*>::iterator it_ = this->pacientes.begin(); it_ != this->pacientes.end(); it_++)
+	{
+		cPaciente* pacientito = (*it_);
+		out << pacientito->to_string();
+	}
+	return out;
+}
+;
 
 cCentro_radioterapia::~cCentro_radioterapia() {
 	this->cantidad_empleados--;

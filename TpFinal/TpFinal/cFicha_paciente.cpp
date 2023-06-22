@@ -100,4 +100,10 @@ string cFicha_paciente::get_estado_tratamiento() {
 	return this->estado_tratamiento;
 }
 
+cOncologo* cFicha_paciente::get_Oncologo()
+{
+	return this->oncologo;
+}
+
+
 cFicha_paciente::~cFicha_paciente() {};
