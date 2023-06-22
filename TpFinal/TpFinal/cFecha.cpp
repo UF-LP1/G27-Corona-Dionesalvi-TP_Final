@@ -49,10 +49,12 @@ string cFecha::get_fecha() {
 		"/" + to_string(fecha.tm_mday);
 }
 
+
 bool cFecha::operator==(cFecha& otra) { //pasa todo a segundos, la actual y la que recibe. las compara y devuelve si son iguales
 	time_t aux_this = mktime(&(this->fecha));
 	time_t aux_otra = mktime(&(otra.fecha));
 	return aux_this == aux_otra;
 }
+
 
 cFecha::~cFecha() {};
