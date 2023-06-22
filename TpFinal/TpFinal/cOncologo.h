@@ -2,8 +2,6 @@
 #include <list>
 #include "cEmpleado.h" 
 
-
-
 using namespace std;
 
 class cPaciente;

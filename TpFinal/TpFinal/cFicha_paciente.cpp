@@ -2,7 +2,7 @@
 #include "cOncologo.h"
 #include "cPaciente.h"
 
-cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento, float radiacion_por_sesion, string estado_tratamiento) : DNI(DNI) {
+cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento, float radiacion_por_sesion, string estado_tratamiento, int sesiones_cumplidas) : DNI(DNI) {
 	this->oncologo = oncologo;
 	this->fechas = fecha;
 	this->tumores = tumores;
@@ -11,6 +11,7 @@ cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list 
 	this->radiacion_total = radiacion_total;
 	this->radiacion_por_sesion = radiacion_por_sesion;
 	this->estado_tratamiento = estado_tratamiento;
+	this->sesiones_cumplidas =sesiones_cumplidas;
 }
 
 cFicha_paciente::cFicha_paciente(cPaciente* paciente, cOncologo* oncologo) //constructor por parametro por defecto
@@ -21,7 +22,7 @@ cFicha_paciente::cFicha_paciente(cPaciente* paciente, cOncologo* oncologo) //con
 	this->radiacion_por_sesion = 0;
 	this->radiacion_total = 0;
 	this->DNI = paciente->get_DNI();
-
+	this->sesiones_cumplidas = 0;
 };
 
 void cFicha_paciente::operator+(cTumor* tumor) {
@@ -104,6 +105,15 @@ cOncologo* cFicha_paciente::get_Oncologo()
 {
 	return this->oncologo;
 }
+
+int cFicha_paciente::get_sesiones_cumplidas(){
+
+	return this->sesiones_cumplidas;
+};
+
+void cFicha_paciente::set_sesiones_cumplidas(int sesion){
+	this->sesiones_cumplidas = sesion;
+};
 
 
 cFicha_paciente::~cFicha_paciente() {};

@@ -25,7 +25,7 @@ void cTumor::set_ubicacion(eUbicacion ubicacion) {
 
 float cTumor::get_radiacion_acum()
 {
-	return radiacion_acum;
+	return this->radiacion_acum;
 }
 
 void cTumor::set_radiacion_acum(float radiacion) {

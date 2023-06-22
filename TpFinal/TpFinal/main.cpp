@@ -54,7 +54,7 @@ int main()
 	int opcion;
 	cin >> opcion;
 	
-	switch (opcion)
+switch (opcion)
 	{
 	default:
 		break;

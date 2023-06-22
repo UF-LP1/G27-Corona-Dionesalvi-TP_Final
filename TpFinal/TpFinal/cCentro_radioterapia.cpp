@@ -111,6 +111,7 @@ list<cPaciente*> cCentro_radioterapia::buscar_paciente_en_tratamiento(list<cPaci
 void cCentro_radioterapia::sacar_paciente(cPaciente* paciente) {
 
 	this->pacientes.remove(paciente);
+
 };
 
 void cCentro_radioterapia::agregar_paciente(cPaciente* paciente) {

@@ -125,12 +125,19 @@ list<cTumor> cOncologo::diagnostico_tumor(cPaciente* p) { //Se determinan las ca
 
 bool cOncologo::asistencia_sesion(cFicha_paciente * f, cFecha* e) {
 
-	list<cFecha*> b = f->get_fechas(); //guardo las fechas que el paciente tiene en su ficha
-		cFecha a = cFecha(); //me guardo la fecha actual
-	for (list<cFecha*>::iterator it = b.begin(); it != b.end(); it++) {
+	list<cFecha*> a = f->get_fechas(); //guardo las fechas que el paciente tiene en su ficha
+		cFecha b = cFecha(); //me guardo la fecha actual
+	for (list<cFecha*>::iterator it = a.begin(); it != a.end(); it++) {
 		cFecha* aux2 = (*it);
-		if (aux2 == &a) { //utilizo sobrecarga del == en cFecha
-
+		if (aux2 == &b) { //utilizo sobrecarga del == en cFecha
+			f->set_sesiones_cumplidas(+1);
+			int c = f->get_sesiones_cumplidas();
+			float d = f->get_radiacion_por_sesion();
+			list<cTumor*> g = f->get_tumor();
+			for (list<cTumor*>::iterator it = g.begin(); it != g.end(); it++) {
+				cTumor* aux = (*it);
+				aux->set_radiacion_acum(c * d);
+			}
 			return true;
 		}
 		else 
@@ -146,6 +153,7 @@ bool cOncologo::chequeo_alta(cPaciente * p) {
 		cTumor* aux = (*it);
 		if (a == aux->get_radiacion_acum()) {
 			p->get_ficha()->set_estado_tratamiento("dado de alta");
+
 			return true;
 		}
 		else 
