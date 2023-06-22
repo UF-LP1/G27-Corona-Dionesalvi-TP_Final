@@ -1,12 +1,14 @@
 #include "cCentro_radioterapia.h"
 #include "cOncologo.h"
 
-cCentro_radioterapia::cCentro_radioterapia(string direccion, list<cPaciente*> pacientes, list<cEmpleado*> empleados /*,static int cantidad_empleados*/) {
+int cCentro_radioterapia::  cantidad_empleados = 0;
+
+cCentro_radioterapia::cCentro_radioterapia(string direccion, list<cPaciente*> pacientes, list<cEmpleado*> empleados, int cantidad_empleados) {
 
 	this->direccion = direccion;
 	this->pacientes = pacientes;
 	this->empleados = empleados;
-	//this->cantidad_empleados = cantidad_empleados;
+	this->cantidad_empleados++;
 }
 
 void contactar_paciente();
@@ -33,7 +35,7 @@ void cCentro_radioterapia::derivar_paciente(cPaciente* paciente) {
 
 }
 
-list<cPaciente*> cCentro_radioterapia::buscar_paciente_limite_radiacion(list<cPaciente*> paciente) {
+list<cPaciente*>buscar_paciente_limite_radiacion(list<cPaciente*> paciente) { //metodo friend, no requiere operador de ambito
 	list<cPaciente*> pacientes_radiacion;
 	bool flag = false;
 	for (list<cPaciente*>::iterator it_ = paciente.begin(); it_ != paciente.end(); it_++) {
@@ -50,7 +52,7 @@ list<cPaciente*> cCentro_radioterapia::buscar_paciente_limite_radiacion(list<cPa
 		}
 	}
 	return pacientes_radiacion;
-};
+}; 
 
 list<cPaciente*> cCentro_radioterapia::buscar_paciente_en_tratamiento(list<cPaciente*> paciente,eUbicacion ubitumor,string tipotrat) //recibo una lista de pac 
 {	
@@ -125,4 +127,6 @@ void cCentro_radioterapia::operator-(cPaciente* paciente) {
 
 };
 
-cCentro_radioterapia::~cCentro_radioterapia() {};
+cCentro_radioterapia::~cCentro_radioterapia() {
+	this->cantidad_empleados--;
+};

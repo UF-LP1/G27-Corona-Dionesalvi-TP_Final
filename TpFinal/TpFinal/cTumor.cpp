@@ -1,7 +1,7 @@
 #include "cTumor.h"
 
 
-cTumor::cTumor(eTamanio tamanio, eUbicacion ubicacion, double radiacion_acum) {
+cTumor::cTumor(eTamanio tamanio, eUbicacion ubicacion, float radiacion_acum) {
 	this->tamanio = tamanio;
 	this->ubicacion = ubicacion;
 	this->radiacion_acum = radiacion_acum;

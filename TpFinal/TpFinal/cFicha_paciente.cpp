@@ -11,7 +11,8 @@ cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list 
 	this->radiacion_total = radiacion_total;
 	this->radiacion_por_sesion = radiacion_por_sesion;
 }
-cFicha_paciente::cFicha_paciente(cPaciente* paciente, cOncologo* oncologo)
+
+cFicha_paciente::cFicha_paciente(cPaciente* paciente, cOncologo* oncologo) //constructor por parametro por defecto
 {
 	this->oncologo = oncologo;
 	this->fechas.push_back(new cFecha());

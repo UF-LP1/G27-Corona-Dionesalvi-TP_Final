@@ -107,7 +107,18 @@ list<cTumor> cOncologo::diagnostico_tumor(cPaciente* p) { //Se determinan las ca
 	}
 };
 
-bool cOncologo::asistencia_sesion() {
+bool cOncologo::asistencia_sesion(cFicha_paciente * f, cFecha* e) {
+
+	/*list<cFecha*> b = f->get_fechas(); //guardo las fechas que el paciente tiene en su ficha
+		cFecha a = cFecha(); //me guardo la fecha actual
+	for (list<cFecha*>::iterator it = b.begin(); it != b.end(); it++) {
+		cFecha* aux2 = (*it);
+		if (a == aux2) {
+
+		}
+
+
+	}*/
 	return true;
 };
 

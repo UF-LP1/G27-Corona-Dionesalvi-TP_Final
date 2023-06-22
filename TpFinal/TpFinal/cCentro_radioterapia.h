@@ -14,11 +14,11 @@ class cCentro_radioterapia
 {
 public:
 
-	cCentro_radioterapia(string direccion, list<cPaciente*> pacientes, list <cEmpleado*> empleados /*,static int cantidad_empleados*/);
+	cCentro_radioterapia(string direccion, list<cPaciente*> pacientes, list <cEmpleado*> empleados , int cantidad_empleados);
 
 	void contactar_paciente();
 	void derivar_paciente(cPaciente* paciente);
-	list<cPaciente*> buscar_paciente_limite_radiacion(list<cPaciente*> paciente);
+	friend list<cPaciente*> buscar_paciente_limite_radiacion(list<cPaciente*> paciente);
 	list<cPaciente*> buscar_paciente_en_tratamiento(list<cPaciente*> paciente, eUbicacion ubitumor,string tipotrat);
 	void sacar_paciente(cPaciente* paciente);
 	void agregar_paciente(cPaciente* paciente);
@@ -30,7 +30,7 @@ private:
 	string direccion;
 	list <cPaciente*> pacientes;
 	list <cEmpleado*> empleados;
-	//static int cantidad_empleados;
+	static int cantidad_empleados;
 
 };
 

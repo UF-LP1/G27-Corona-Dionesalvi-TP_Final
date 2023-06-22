@@ -91,8 +91,6 @@ void cDosimetrista:: tipo_terapia_a_recibir(cPaciente* paciente) {
 	}
 };
 
-
-
 cDosimetrista::~cDosimetrista()
 {
 }
