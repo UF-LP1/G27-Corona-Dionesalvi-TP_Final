@@ -13,7 +13,8 @@ public:
 	void tratamiento();
 
 	cFicha_paciente* get_ficha();
-	string get_DNI();
+	const string get_DNI();
+
 
 	~cPaciente();
 

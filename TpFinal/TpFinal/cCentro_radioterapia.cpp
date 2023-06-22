@@ -134,6 +134,7 @@ void cCentro_radioterapia::operator-(cPaciente* paciente) {
 
 };
 
+
 cCentro_radioterapia::~cCentro_radioterapia() {
 	this->cantidad_empleados--;
 };

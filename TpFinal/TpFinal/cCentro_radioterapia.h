@@ -24,6 +24,7 @@ public:
 	void agregar_paciente(cPaciente* paciente);
 	void operator+(cPaciente* paciente);
 	void operator-(cPaciente* paciente);
+	
 	~cCentro_radioterapia();
 
 private:

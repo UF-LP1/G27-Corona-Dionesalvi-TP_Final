@@ -12,7 +12,7 @@ cFicha_paciente* cPaciente::get_ficha() {
 	return this->ficha;
 }
 
-string cPaciente::get_DNI()
+const string cPaciente::get_DNI()
 {
 	return this->DNI;
 };
