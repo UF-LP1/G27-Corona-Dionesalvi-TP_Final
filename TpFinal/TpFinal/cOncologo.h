@@ -18,9 +18,8 @@ public:
 	double calculo_dosis(cFicha_paciente* ficha);
 	list <cTumor> diagnostico_tumor(cPaciente* p);
 	bool asistencia_sesion(cFicha_paciente* f, cFecha* e);
-
 	bool chequeo_alta(cPaciente* p);
-	void reevaluar_tratamiento();
+	
 
 	~cOncologo();
 
