@@ -11,7 +11,9 @@ cCentro_radioterapia::cCentro_radioterapia(string direccion, list<cPaciente*> pa
 	this->cantidad_empleados++;
 }
 
-void contactar_paciente();
+void contactar_paciente() {
+
+};
 
 void cCentro_radioterapia::derivar_paciente(cPaciente* paciente) {
 	cFicha_paciente* p = paciente->get_ficha();
@@ -32,20 +34,21 @@ void cCentro_radioterapia::derivar_paciente(cPaciente* paciente) {
 		}
 }
 
-list<cPaciente*>buscar_paciente_limite_radiacion(list<cPaciente*> paciente) { //metodo friend, no requiere operador de ambito
+list<cPaciente*>cCentro_radioterapia :: buscar_paciente_limite_radiacion() { //metodo friend, no requiere operador de ambito
 	list<cPaciente*> pacientes_radiacion;
 	bool flag = false;
-	for (list<cPaciente*>::iterator it_ = paciente.begin(); it_ != paciente.end(); it_++) {
+	for (list<cPaciente*>::iterator it_ = pacientes.begin(); it_ != pacientes.end(); it_++) {
 		cPaciente* aux2 = (*it_);
 		for (list<cTumor*>::iterator ti_ = aux2->get_ficha()->get_tumor().begin(); ti_ != aux2->get_ficha()->get_tumor().end(); ti_++) {
 			cTumor* aux3 = (*ti_);
 			flag = false;
-			if (aux3->get_radiacion_acum()>((95*100))/(aux3->get_radiacion_recibir()))
+			if (aux3->get_radiacion_acum() > ((95 * 100) / (aux2->get_ficha()->get_radiacion_total()))) //busco pacientescon tumores cerca de alcanzar limite de raciacion
 			{
 				pacientes_radiacion.push_back(aux2);
 				flag = true; //para que no se repita mi paciente, puede tener mas de un tumor con +95%
 			}
-			if (flag == true) break;
+			if (flag == true) 
+				break;
 		}
 	}
 	return pacientes_radiacion;

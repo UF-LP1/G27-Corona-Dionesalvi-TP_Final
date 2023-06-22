@@ -28,9 +28,4 @@ float cTumor::get_radiacion_acum()
 	return radiacion_acum;
 }
 
-float cTumor:: get_radiacion_recibir()
-{
-	return this->radiacion_recibir;
-}
-
 cTumor::~cTumor() {};

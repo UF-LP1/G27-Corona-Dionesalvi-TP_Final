@@ -16,5 +16,6 @@ public:
 	cFecha(int dia, int mes, int anio);
 	string get_fecha();
 	void SetNow();
+	bool operator==(cFecha& otra);
 	~cFecha();
 };

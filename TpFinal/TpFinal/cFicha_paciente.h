@@ -11,7 +11,7 @@ class cFicha_paciente
 
 {
 public:
-	cFicha_paciente(cOncologo* oncologo, list<cFecha*> fechas, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento, float radiacion_por_sesion);
+	cFicha_paciente(cOncologo* oncologo, list<cFecha*> fechas, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento, float radiacion_por_sesion, string estado_tratamiento);
 	cFicha_paciente(cPaciente* paciente, cOncologo* oncologo);
 
 	void operator+(cTumor* tumor);
@@ -27,7 +27,8 @@ public:
 	void set_frecuencia_semanal_tratamiento(int frecuencia);
 	int get_frecuencia_semanal_tratamiento();
 	list<cFecha*>get_fechas();
-
+	void set_estado_tratamiento(string estado);
+	string get_estado_tratamiento();
 
 	~cFicha_paciente();
 
@@ -40,5 +41,5 @@ private:
 	float radiacion_por_sesion;
 	string DNI;
 	int frecuencia_semanal_tratamiento;
-
+	string estado_tratamiento;
 };

@@ -2,7 +2,7 @@
 #include "cOncologo.h"
 #include "cPaciente.h"
 
-cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento, float radiacion_por_sesion) : DNI(DNI) {
+cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento, float radiacion_por_sesion, string estado_tratamiento) : DNI(DNI) {
 	this->oncologo = oncologo;
 	this->fechas = fecha;
 	this->tumores = tumores;
@@ -10,6 +10,7 @@ cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list 
 	this->frecuencia_semanal_tratamiento = frecuencia_semanal_tratamiento;
 	this->radiacion_total = radiacion_total;
 	this->radiacion_por_sesion = radiacion_por_sesion;
+	this->estado_tratamiento = estado_tratamiento;
 }
 
 cFicha_paciente::cFicha_paciente(cPaciente* paciente, cOncologo* oncologo) //constructor por parametro por defecto
@@ -87,6 +88,16 @@ int cFicha_paciente::get_frecuencia_semanal_tratamiento() {
 list<cFecha*> cFicha_paciente::get_fechas() {
 
 	return this->fechas;
+}
+
+void cFicha_paciente::set_estado_tratamiento(string estado){
+
+	this->estado_tratamiento = estado;
+
+};
+
+string cFicha_paciente::get_estado_tratamiento() {
+	return this->estado_tratamiento;
 }
 
 cFicha_paciente::~cFicha_paciente() {};

@@ -136,7 +136,21 @@ bool cOncologo::asistencia_sesion(cFicha_paciente * f, cFecha* e) {
 	}
 };
 
-bool cOncologo::chequeo_alta() { return true; };
+bool cOncologo::chequeo_alta(cPaciente * p) {
+	
+	float a = p->get_ficha()->get_radiacion_total();
+
+	for (list<cTumor*>::iterator it = p->get_ficha()->get_tumor().begin(); it != p->get_ficha()->get_tumor().end(); it++) {
+		cTumor* aux = (*it);
+		if (a == aux->get_radiacion_acum()) {
+			p->get_ficha()->set_estado_tratamiento("dado de alta");
+			return true;
+		}
+		else 
+			p->get_ficha()->set_estado_tratamiento("siga con el tratamiento");
+		return false;
+	}
+	};
 
 void cOncologo::reevaluar_tratamiento() {};
 
