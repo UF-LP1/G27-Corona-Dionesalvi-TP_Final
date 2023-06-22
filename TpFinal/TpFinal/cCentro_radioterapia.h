@@ -14,7 +14,7 @@ class cCentro_radioterapia
 {
 public:
 
-	cCentro_radioterapia(string direccion, list<cPaciente*> pacientes, list <cEmpleado*> empleados);
+	cCentro_radioterapia(string direccion, list<cPaciente*> pacientes, list <cEmpleado*> empleados /*,static int cantidad_empleados*/);
 
 	void contactar_paciente();
 	void derivar_paciente(cPaciente* paciente);
@@ -30,6 +30,7 @@ private:
 	string direccion;
 	list <cPaciente*> pacientes;
 	list <cEmpleado*> empleados;
+	//static int cantidad_empleados;
 
 };
 

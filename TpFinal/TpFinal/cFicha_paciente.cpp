@@ -4,7 +4,7 @@
 
 cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento, float radiacion_por_sesion) : DNI(DNI) {
 	this->oncologo = oncologo;
-	this->fecha = fecha;
+	this->fechas = fecha;
 	this->tumores = tumores;
 	this->tipo_tratamiento = tipo_tratamiento;
 	this->frecuencia_semanal_tratamiento = frecuencia_semanal_tratamiento;
@@ -14,7 +14,7 @@ cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list 
 cFicha_paciente::cFicha_paciente(cPaciente* paciente, cOncologo* oncologo)
 {
 	this->oncologo = oncologo;
-	this->fecha.push_back(new cFecha());
+	this->fechas.push_back(new cFecha());
 	this->frecuencia_semanal_tratamiento = 0;
 	this->radiacion_por_sesion = 0;
 	this->radiacion_total = 0;
@@ -46,7 +46,7 @@ void cFicha_paciente::agregar_tratamiento(string tratamiento) {
 
 void cFicha_paciente::agregar_fecha(cFecha* fecha)
 {
-	this->fecha.push_back(fecha);
+	this->fechas.push_back(fecha);
 };
 
 list<string*> cFicha_paciente::get_tipo_tratamiento()
@@ -69,18 +69,23 @@ float cFicha_paciente::get_radiacion_por_sesion() {
 
 }
 
-float cFicha_paciente::set_radiacion_por_sesion(float radiacion) {
-	return this->radiacion_por_sesion = radiacion;
+void cFicha_paciente::set_radiacion_por_sesion(float radiacion) {
+	 this->radiacion_por_sesion = radiacion;
 }
 
-int cFicha_paciente::set_frecuencia_semanal_tratamiento(int frecuencia) {
-	return this->frecuencia_semanal_tratamiento = frecuencia;
+void cFicha_paciente::set_frecuencia_semanal_tratamiento(int frecuencia) {
+	 this->frecuencia_semanal_tratamiento = frecuencia;
 
 }
 
-void cFicha_paciente::get_frecuencia_semanal_tratamiento() {
+int cFicha_paciente::get_frecuencia_semanal_tratamiento() {
 
-	this->frecuencia_semanal_tratamiento;
+	return this->frecuencia_semanal_tratamiento;
 };
+
+list<cFecha*> cFicha_paciente::get_fechas() {
+
+	return this->fechas;
+}
 
 cFicha_paciente::~cFicha_paciente() {};

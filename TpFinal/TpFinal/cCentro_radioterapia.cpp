@@ -1,11 +1,12 @@
 #include "cCentro_radioterapia.h"
 #include "cOncologo.h"
 
-cCentro_radioterapia::cCentro_radioterapia(string direccion, list<cPaciente*> pacientes, list<cEmpleado*> empleados) {
+cCentro_radioterapia::cCentro_radioterapia(string direccion, list<cPaciente*> pacientes, list<cEmpleado*> empleados /*,static int cantidad_empleados*/) {
 
 	this->direccion = direccion;
 	this->pacientes = pacientes;
 	this->empleados = empleados;
+	//this->cantidad_empleados = cantidad_empleados;
 }
 
 void contactar_paciente();
@@ -17,9 +18,6 @@ void cCentro_radioterapia::derivar_paciente(cPaciente* paciente) {
 			cEmpleado* aux2 = (*it_); //accedo a un elemento tipo cEmpleado, y con el & accedo a la direc de memoria
 			cOncologo* aux = dynamic_cast<cOncologo*>(aux2); //si es empleado, chequeo que sea oncologo
 			//falta en caso de no tener una ficha crearsela
-
-
-
 			//if (aux != nullptr)
 			   // cFicha_paciente* f_new = new cFicha_paciente(paciente,aux);//creamos la ficha del paciente nuevo y le asignamos un Oncologo
 				//aux->diagnostico_tumor(paciente);

@@ -108,13 +108,7 @@ list<cTumor> cOncologo::diagnostico_tumor(cPaciente* p) { //Se determinan las ca
 };
 
 bool cOncologo::asistencia_sesion() {
-
-	int i = 0 + rand() % (2) + 1;
-
-	if (i == 1) return true; // si es 1, asistio
-	else
-		return false;
-
+	return true;
 };
 
 bool cOncologo::chequeo_alta() { return true; };
