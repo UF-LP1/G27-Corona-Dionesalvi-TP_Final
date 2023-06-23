@@ -139,7 +139,6 @@ ostream& cCentro_radioterapia::operator<<(ostream& out)
 	}
 	return out;
 }
-;
 
 cCentro_radioterapia::~cCentro_radioterapia() {
 	this->cantidad_empleados--;

@@ -52,7 +52,7 @@ cPaciente::~cPaciente() {
 string cPaciente::to_string()
 {
 	stringstream  ss;
-	ss << "Nombre: " << this->nombre << "Dni: " << this->DNI << "Contacto: " << this->tel_contacto << "tipo de sangre: " << this->tipo_sangre;
+	ss << "Nombre: " << this->nombre << "DNI: " << this->DNI << "Contacto: " << this->tel_contacto << "Tipo de sangre: " << this->tipo_sangre;
 	
 	return ss.str();
 }
