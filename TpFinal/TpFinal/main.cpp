@@ -43,7 +43,7 @@ int main()
 	cPaciente* paciente4 = new cPaciente();
 
 	
-	/**(ficha) + tumor1;
+	/*(ficha) + tumor1;
 
 	*paciente1->get_ficha() + tumor2;
 	*paciente2->get_ficha() + tumor3;
