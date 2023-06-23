@@ -61,11 +61,19 @@ switch (opcion)
 	{
 
 		case 1:
-			cout << "ingrese el tipo de tratamiento a buscar" << endl;
+			cout << "Ingrese el tipo de tratamiento a buscar:" << endl;
 			cin >> *trat;
 
 			a = centrito->buscar_paciente_en_tratamiento(listapacientes, cuello, trat);
-			for(list<cPaciente*>::iterator it_ = a)
+			
+			//for(list<cPaciente*>::iterator it_ = a->begin()
+
+
+		case 2:
+
+		case 3:
+			cout << "Ingrese el tipo de cancer a buscar:" << endl;
+
 	default:
 		break;
 	}
