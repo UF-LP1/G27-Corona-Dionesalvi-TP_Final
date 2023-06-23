@@ -22,6 +22,7 @@ public:
 	list<cPaciente*> buscar_paciente_en_tratamiento(list<cPaciente*> paciente, eUbicacion ubitumor,string* tipotrat);
 	void sacar_paciente(cPaciente* paciente);
 	void agregar_paciente(cPaciente* paciente);
+	list<cPaciente*> get_pacientes();
 	void operator+(cPaciente* paciente);
 	void operator-(cPaciente* paciente);
 	ostream& operator <<(ostream& out);

@@ -120,6 +120,11 @@ void cCentro_radioterapia::agregar_paciente(cPaciente* paciente) {
 
 };
 
+list<cPaciente*> cCentro_radioterapia::get_pacientes() {
+
+	return this->pacientes;
+};
+
 void cCentro_radioterapia::operator+(cPaciente* paciente) {
 
 	this->agregar_paciente(paciente);
@@ -142,4 +147,14 @@ ostream& cCentro_radioterapia::operator<<(ostream& out)
 
 cCentro_radioterapia::~cCentro_radioterapia() {
 	this->cantidad_empleados--;
+
+	for (list<cEmpleado*>::iterator it = empleados.begin(); it != empleados.end(); it++) {
+
+		this->empleados.pop_back();
+	}
+	for (list<cPaciente*>::iterator it = pacientes.begin(); it != pacientes.end(); it++) {
+		pacientes.pop_back();
+	}
+
+
 };

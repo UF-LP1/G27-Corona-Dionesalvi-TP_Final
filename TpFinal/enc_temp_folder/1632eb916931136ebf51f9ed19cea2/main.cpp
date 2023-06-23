@@ -29,7 +29,6 @@ int main()
 	cTumor* tumor8 = new cTumor(grande, prostata, 4);
 	cTumor* tumor9 = new cTumor(mediano, prostata, 4);
 	cTumor* tumor10 = new cTumor(pequenio, prostata, 4);
-
 	cFicha_paciente* ficha = new cFicha_paciente(oncologo,tumores);
 
 	cFicha_paciente* ficha1 = new cFicha_paciente(oncologo,tumores);
@@ -53,10 +52,13 @@ int main()
 	*paciente3->get_ficha() + tumor7;
 	*paciente3->get_ficha() + tumor8;
 	*paciente3->get_ficha() + tumor9;
-	*paciente4->get_ficha() + tumor10;
+	*paciente4->get_ficha() + tumor10;*/
 	
-	*/
-
+	
+	/*paciente1->set_ficha(ficha);
+	paciente2->set_ficha(ficha1);
+	paciente3->set_ficha(ficha2);
+	paciente4->set_ficha(ficha3);*/
 	listapacientes.push_back(paciente1);
 	listapacientes.push_back(paciente2);
 	listapacientes.push_back(paciente3);
@@ -87,6 +89,7 @@ switch (opcion)
 			}
 			break;
 
+			break;
 
 		case 2:
 			a = centrito->get_pacientes();
@@ -108,6 +111,9 @@ switch (opcion)
 	default:
 		break;
 	}
+
+
+
 
 
 

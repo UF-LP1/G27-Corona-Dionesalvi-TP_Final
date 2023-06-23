@@ -12,16 +12,17 @@ cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list 
 	this->radiacion_por_sesion = radiacion_por_sesion;
 	this->estado_tratamiento = estado_tratamiento;
 	this->sesiones_cumplidas =sesiones_cumplidas;
+	
 }
 
-cFicha_paciente::cFicha_paciente(cPaciente* paciente, cOncologo* oncologo) //constructor por parametro por defecto
+cFicha_paciente::cFicha_paciente(cOncologo* oncologo,list<cTumor*> listilla) //constructor por parametro por defecto
 {
 	this->oncologo = oncologo;
 	this->fechas.push_back(new cFecha());
 	this->frecuencia_semanal_tratamiento = 0;
 	this->radiacion_por_sesion = 0;
 	this->radiacion_total = 0;
-	this->DNI = paciente->get_DNI();
+	this->tumores = listilla;
 	this->sesiones_cumplidas = 0;
 };
 
@@ -116,4 +117,17 @@ void cFicha_paciente::set_sesiones_cumplidas(int sesion){
 };
 
 
-cFicha_paciente::~cFicha_paciente() {};
+cFicha_paciente::~cFicha_paciente() {
+
+	for (list<cFecha*>::iterator it = fechas.begin(); it != fechas.end(); it++) {
+		cFecha* aux = (*it);
+		this->fechas.pop_back();
+}
+	for (list<cTumor*>::iterator it = tumores.begin(); it != tumores.end(); it++) {
+		tumores.pop_back();
+	}
+	for (list<string*>::iterator it = tipo_tratamiento.begin(); it != tipo_tratamiento.end(); it++) {
+		tipo_tratamiento.pop_back();
+	}
+
+};

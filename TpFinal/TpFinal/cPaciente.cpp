@@ -1,11 +1,12 @@
 #include "cPaciente.h"
 #include "cOncologo.h"
 
-cPaciente::cPaciente(string nombre, string DNI, string sexo, string tel_contacto, string tipo_sangre, float porcentaje_salud) {
+cPaciente::cPaciente(string nombre, string DNI, string sexo, string tel_contacto, string tipo_sangre, float porcentaje_salud, cFicha_paciente* fichita) {
 	this->nombre = nombre;
 	this->sexo = sexo;
 	this->tel_contacto = tel_contacto;
 	this->porcentaje_salud = porcentaje_salud;
+	this->ficha = fichita;
 	
 };
 

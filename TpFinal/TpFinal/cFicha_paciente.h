@@ -12,7 +12,7 @@ class cFicha_paciente
 {
 public:
 	cFicha_paciente(cOncologo* oncologo, list<cFecha*> fechas, list <cTumor*> tumores, list<string*> tipo_tratamiento, float radiacion_total, string DNI, int frecuencia_semanal_tratamiento, float radiacion_por_sesion, string estado_tratamiento, int sesiones_cumplidas);
-	cFicha_paciente(cPaciente* paciente, cOncologo* oncologo);
+	cFicha_paciente( cOncologo* oncologo,list<cTumor*> listilla);
 
 	void operator+(cTumor* tumor);
 	void operator-(cTumor* tumor);
@@ -32,7 +32,6 @@ public:
 	cOncologo* get_Oncologo();
 	int get_sesiones_cumplidas();
 	void set_sesiones_cumplidas(int sesion);
-
 
 	~cFicha_paciente();
 

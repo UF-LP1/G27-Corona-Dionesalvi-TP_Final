@@ -10,7 +10,7 @@ class cOncologo;
 class cPaciente
 {
 public:
-	cPaciente(string nombre, string DNI, string sexo, string tel_contacto, string tipo_sangre, float porcentaje_salud);
+	cPaciente(string nombre, string DNI, string sexo, string tel_contacto, string tipo_sangre, float porcentaje_salud, cFicha_paciente* fichita);
 	cPaciente();
 	void tratamiento();
 	cFicha_paciente* get_ficha();
