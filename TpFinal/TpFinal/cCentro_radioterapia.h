@@ -5,6 +5,7 @@
 #include <list>
 #include "cPaciente.h"
 #include "cDosimetrista.h"
+#include <algorithm>
 
 
 using namespace std;

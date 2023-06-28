@@ -119,14 +119,17 @@ void cFicha_paciente::set_sesiones_cumplidas(int sesion){
 
 cFicha_paciente::~cFicha_paciente() {
 
-	for (list<cFecha*>::iterator it = fechas.begin(); it != fechas.end(); it++) {
-		cFecha* aux = (*it);
-		this->fechas.pop_back();
-}
-	for (list<cTumor*>::iterator it = tumores.begin(); it != tumores.end(); it++) {
+	while (fechas.size() != 0)
+	{
+		fechas.pop_back();
+	}
+
+	while(tumores.size()!= 0)
+	{
 		tumores.pop_back();
 	}
-	for (list<string*>::iterator it = tipo_tratamiento.begin(); it != tipo_tratamiento.end(); it++) {
+	while (tipo_tratamiento.size() != 0)
+	{
 		tipo_tratamiento.pop_back();
 	}
 

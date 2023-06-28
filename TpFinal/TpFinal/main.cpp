@@ -4,7 +4,7 @@
  
 int main()
 {
-	list<cPaciente*> listapacientes;
+	list<cPaciente*> listapacientess;
 	list<cEmpleado*> listaempleados;
 	list<cTumor*> tumores;
 	list<string*> tratamientos;
@@ -17,7 +17,7 @@ int main()
 	cFecha* fecha = new cFecha(2, 4, 2000);
 	cFecha* fecha2 = new cFecha();
 
-	cCentro_radioterapia* centrito = new cCentro_radioterapia("Ecuador 1050", listapacientes, listaempleados, 80);
+	
 	
 	cTumor* tumor1 = new cTumor(grande, prostata, 4);
 	cTumor* tumor2 = new cTumor(pequenio, prostata, 4);
@@ -37,16 +37,16 @@ int main()
 	cFicha_paciente* ficha3 = new cFicha_paciente(oncologo2,tumores);
 
 
-	cPaciente* paciente1 = new cPaciente();
+	//cPaciente* paciente1 = new cPaciente();
 	cPaciente* paciente2 = new cPaciente("juan", "44637232", "m", "1123435632", "A++", 60,ficha);
 	cPaciente* paciente3 = new cPaciente("isa", "43357892", "f", "1177665632", "0", 44,ficha );
-	cPaciente* paciente4 = new cPaciente();
+	//cPaciente* paciente4 = new cPaciente();
 
 	
-	/*(ficha) + tumor1;
+	*(ficha) + tumor1;
 
-	*paciente1->get_ficha() + tumor2;
-	*paciente2->get_ficha() + tumor3;
+	/*paciente1->get_ficha() + tumor2;
+	/*paciente2->get_ficha() + tumor3;
 	*paciente2->get_ficha() + tumor4; 
 	*paciente2->get_ficha() + tumor5;
 	*paciente2->get_ficha() + tumor6;
@@ -57,11 +57,11 @@ int main()
 	
 	*/
 
-	listapacientes.push_back(paciente1);
-	listapacientes.push_back(paciente2);
-	listapacientes.push_back(paciente3);
-	listapacientes.push_back(paciente3);
-
+	//listapacientes.push_back(paciente1);
+	listapacientess.push_back(paciente2);
+	listapacientess.push_back(paciente3);
+	//listapacientes.push_back(paciente3);
+	cCentro_radioterapia* centrito = new cCentro_radioterapia("Ecuador 1050", listapacientess, listaempleados, 80);
 
 	cout << "----------------menu---------------" << endl;
 	cout << "Ingrese una opcion" << endl;
@@ -79,7 +79,7 @@ switch (opcion)
 			cout << "Ingrese el tipo de tratamiento a buscar:" << endl;
 			cin >> *trat;
 
-			a = centrito->buscar_paciente_en_tratamiento(listapacientes, cuello, trat);
+			a = centrito->buscar_paciente_en_tratamiento(listapacientess, cuello, trat);
 			
 			for (list<cPaciente*>::iterator it_ = a.begin(); it_ != a.end(); it_++) {
 				cPaciente* aux = (*it_);
@@ -93,6 +93,7 @@ switch (opcion)
 			for (list<cPaciente*>::iterator it_ = a.begin(); it_ != a.end(); it_++) {
 				cPaciente* aux = (*it_);
 				string imprimir = aux->to_string();
+				cout << imprimir<<endl;
 			}
 			break;
 
@@ -102,6 +103,7 @@ switch (opcion)
 			for (list<cPaciente*>::iterator it_ = a.begin(); it_ != a.end(); it_++) {
 				cPaciente* aux = (*it_);
 				string imprimir = aux->to_string();
+				cout << imprimir << endl;
 			}
 			break;
 
@@ -109,9 +111,19 @@ switch (opcion)
 		break;
 	}
 
-
-
 	delete centrito;
+
+	delete paciente2;
+	delete paciente3;
+	delete dosimetrista;
+	delete dosimetrista2;
+	delete ficha;
+	delete ficha1;
+	delete ficha2;
+	delete ficha3;
+
+	delete oncologo;
+	delete oncologo2;
 
 	delete tumor1;
 	delete tumor2;
@@ -124,24 +136,15 @@ switch (opcion)
 	delete tumor9;
 	delete tumor10;
 	
-	delete dosimetrista;
-	delete dosimetrista2;
-
-	delete oncologo;
-	delete oncologo2;
-
-	delete fecha;
-	delete fecha2;
-
-	delete ficha1;
-	delete ficha2;
-	delete ficha3;
 	
-	delete paciente1;
-	delete paciente2;
-	delete paciente3;
-	delete paciente4;
-
-
+	//delete ficha1;
+	//delete ficha2;
+	//delete ficha3;
+	
+	//delete paciente1;
+	
+	//delete paciente4;
+	
+	
 	return 0;
 }
