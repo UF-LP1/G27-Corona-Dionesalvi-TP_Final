@@ -14,7 +14,7 @@ public:
 	cPaciente();
 	cFicha_paciente* get_ficha();
 	const string get_DNI();
-	void set_ficha(cFicha_paciente* ficha);
+	friend void set_ficha(cFicha_paciente* ficha);
 	bool operator==(string DNI_oncologo);
 	string to_string();
 	~cPaciente();

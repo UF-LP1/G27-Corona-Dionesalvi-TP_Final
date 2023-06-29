@@ -26,9 +26,9 @@ const string cPaciente::get_DNI()
 	return this->DNI;
 };
 
-void cPaciente::set_ficha(cFicha_paciente* ficha)
+void set_ficha(cFicha_paciente* ficha)
 {
-	this->ficha = ficha;
+	ficha = ficha;
 }
 
 
