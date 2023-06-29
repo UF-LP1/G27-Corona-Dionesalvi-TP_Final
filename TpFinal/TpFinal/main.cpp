@@ -62,6 +62,15 @@ int main()
 	string* trat = new string;
 	list<cPaciente*> superfiltrados;
 
+	cout << "Se agrega el nuevo paciente a la lista" << endl << endl; 
+	try {
+		BSA.agregar_donante(mariano, chubut);//agrego al donante nuevo
+	}
+	catch (exception* e) {
+		cout << e->what() << endl;
+		delete e;
+	}
+
 	switch (opcion)
 	{
 
