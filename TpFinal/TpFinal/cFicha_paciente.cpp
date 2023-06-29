@@ -11,11 +11,11 @@ cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cFecha*> fecha, list 
 	this->radiacion_total = radiacion_total;
 	this->radiacion_por_sesion = radiacion_por_sesion;
 	this->estado_tratamiento = estado_tratamiento;
-	this->sesiones_cumplidas =sesiones_cumplidas;
-	
+	this->sesiones_cumplidas = sesiones_cumplidas;
+
 }
 
-cFicha_paciente::cFicha_paciente(cOncologo* oncologo,list<cTumor*> listilla) //constructor por parametro por defecto
+cFicha_paciente::cFicha_paciente(cOncologo* oncologo, list<cTumor*> listilla) //constructor por parametro por defecto
 {
 	this->oncologo = oncologo;
 	this->fechas.push_back(new cFecha());
@@ -74,11 +74,11 @@ float cFicha_paciente::get_radiacion_por_sesion() {
 }
 
 void cFicha_paciente::set_radiacion_por_sesion(float radiacion) {
-	 this->radiacion_por_sesion = radiacion;
+	this->radiacion_por_sesion = radiacion;
 }
 
 void cFicha_paciente::set_frecuencia_semanal_tratamiento(int frecuencia) {
-	 this->frecuencia_semanal_tratamiento = frecuencia;
+	this->frecuencia_semanal_tratamiento = frecuencia;
 
 }
 
@@ -92,7 +92,7 @@ list<cFecha*> cFicha_paciente::get_fechas() {
 	return this->fechas;
 }
 
-void cFicha_paciente::set_estado_tratamiento(string estado){
+void cFicha_paciente::set_estado_tratamiento(string estado) {
 
 	this->estado_tratamiento = estado;
 
@@ -107,14 +107,22 @@ cOncologo* cFicha_paciente::get_Oncologo()
 	return this->oncologo;
 }
 
-int cFicha_paciente::get_sesiones_cumplidas(){
+int cFicha_paciente::get_sesiones_cumplidas() {
 
 	return this->sesiones_cumplidas;
 };
 
-void cFicha_paciente::set_sesiones_cumplidas(int sesion){
+void cFicha_paciente::set_sesiones_cumplidas(int sesion) {
 	this->sesiones_cumplidas = sesion;
-};
+}
+void cFicha_paciente::recorrotumores()
+{
+	for (list<cTumor*>::iterator it_ = this->tumores.begin(); it_ != this->tumores.end(); it_)
+	{
+
+	}
+}
+;
 
 
 cFicha_paciente::~cFicha_paciente() {
@@ -124,7 +132,7 @@ cFicha_paciente::~cFicha_paciente() {
 		fechas.pop_back();
 	}
 
-	while(tumores.size()!= 0)
+	while (tumores.size() != 0)
 	{
 		tumores.pop_back();
 	}

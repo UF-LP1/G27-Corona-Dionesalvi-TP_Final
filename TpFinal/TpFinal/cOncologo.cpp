@@ -2,13 +2,13 @@
 #include "cPaciente.h"
 #include "cFicha_paciente.h"
 
-cOncologo::cOncologo(string especialidad_cancer, string DNI, string matricula):cEmpleado(matricula)
+cOncologo::cOncologo(string especialidad_cancer, string DNI, string matricula) :cEmpleado(matricula)
 {
 	this->especialidad_cancer = especialidad_cancer;
 	this->DNI_ = DNI;
 }
 
-double cOncologo::calculo_dosis(cPaciente * paciente) { //DOSIS POR SESION
+double cOncologo::calculo_dosis(cPaciente* paciente) { //DOSIS POR SESION
 
 	float a = paciente->get_ficha()->get_radiacion_total();
 	float b = paciente->get_ficha()->get_radiacion_por_sesion();
@@ -44,8 +44,9 @@ double cOncologo::calculo_dosis(cPaciente * paciente) { //DOSIS POR SESION
 	if (a >= 20 && a <= 40) //si varia entre estos nros es radioterapia sistemica. dosis por sesion entre 2-4
 	{
 		if (((int)a % 2) == 0) {
-			paciente->get_ficha()->set_radiacion_por_sesion(2.0);
+			paciente->ficha->set_radiacion_por_sesion(2.0);
 			paciente->get_ficha()->set_frecuencia_semanal_tratamiento(a / b);
+
 		}
 
 	}
@@ -123,10 +124,10 @@ list<cTumor> cOncologo::diagnostico_tumor(cPaciente* p) { //Se determinan las ca
 	}
 };
 
-bool cOncologo::asistencia_sesion(cFicha_paciente * f, cFecha* e) {
+bool cOncologo::asistencia_sesion(cFicha_paciente* f, cFecha* e) {
 
 	list<cFecha*> a = f->get_fechas(); //guardo las fechas que el paciente tiene en su ficha
-		cFecha b = cFecha(); //me guardo la fecha actual
+	cFecha b = cFecha(); //me guardo la fecha actual
 	for (list<cFecha*>::iterator it = a.begin(); it != a.end(); it++) {
 		cFecha* aux2 = (*it);
 		if (aux2 == &b) { //utilizo sobrecarga del == en cFecha
@@ -140,27 +141,27 @@ bool cOncologo::asistencia_sesion(cFicha_paciente * f, cFecha* e) {
 			}
 			return true;
 		}
-		else 
+		else
 			return false;
 	}
 };
 
-bool cOncologo::chequeo_alta(cPaciente * p) {
-	
-	float a = p->get_ficha()->get_radiacion_total();
+bool cOncologo::chequeo_alta(cPaciente* p) {
 
-	for (list<cTumor*>::iterator it = p->get_ficha()->get_tumor().begin(); it != p->get_ficha()->get_tumor().end(); it++) {
+	float a = p->get_ficha()->get_radiacion_total();
+	list <cTumor*> tumorteton = p->get_ficha()->get_tumor();
+	for (list<cTumor*>::iterator it = tumorteton.begin(); it != tumorteton.end(); it++) {
 		cTumor* aux = (*it);
 		if (a == aux->get_radiacion_acum()) {
 			p->get_ficha()->set_estado_tratamiento("dado de alta");
 
 			return true;
 		}
-		else 
+		else
 			p->get_ficha()->set_estado_tratamiento("siga con el tratamiento");
 		return false;
 	}
-	};
+};
 
 string cOncologo::get_DNI() {
 

@@ -12,7 +12,7 @@ class cEmpleado
 public:
 	cEmpleado(string matricula);
 
-	virtual double calcular_dosis(cPaciente* paciente) ;
+	virtual double calcular_dosis(cPaciente* paciente);
 
 	~cEmpleado();
 

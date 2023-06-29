@@ -48,7 +48,7 @@ double calculo_dosis(cPaciente* paciente) { //DOSIS TOTAL
 	return 0;
 };
 
-void cDosimetrista:: tipo_terapia_a_recibir(cPaciente* paciente) {
+void cDosimetrista::tipo_terapia_a_recibir(cPaciente* paciente) {
 
 	list<cTumor*> b = paciente->get_ficha()->get_tumor(); //Guardo la lista de tumores q tiene
 

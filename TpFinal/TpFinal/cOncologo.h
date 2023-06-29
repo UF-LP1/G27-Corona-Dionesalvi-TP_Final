@@ -7,6 +7,7 @@ using namespace std;
 class cPaciente;
 class cFicha_paciente;
 
+
 class cOncologo : public cEmpleado
 {
 public:

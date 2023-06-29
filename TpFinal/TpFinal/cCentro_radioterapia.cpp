@@ -1,7 +1,7 @@
 #include "cCentro_radioterapia.h"
 #include "cOncologo.h"
 
-int cCentro_radioterapia::  cantidad_empleados = 0;
+int cCentro_radioterapia::cantidad_empleados = 0;
 
 cCentro_radioterapia::cCentro_radioterapia(string direccion, list<cPaciente*> pacientes, list<cEmpleado*> empleados, int cantidad_empleados) {
 
@@ -12,15 +12,15 @@ cCentro_radioterapia::cCentro_radioterapia(string direccion, list<cPaciente*> pa
 }
 
 void contactar_paciente(cOncologo* o, cPaciente* z) {
-	cFicha_paciente * k = z->get_ficha();
+	cFicha_paciente* k = z->get_ficha();
 	cFecha* a = new cFecha();
-	bool b = o->asistencia_sesion(k,a);
+	bool b = o->asistencia_sesion(k, a);
 	if (b == true) {
 		z->get_ficha()->set_estado_tratamiento("tratamiento vigente");
 	}
 	else
 		z->get_ficha()->set_estado_tratamiento("CONTACTARSE");
-	}
+}
 
 void cCentro_radioterapia::derivar_paciente(cPaciente* paciente) {
 	cFicha_paciente* p = paciente->get_ficha();
@@ -41,71 +41,46 @@ void cCentro_radioterapia::derivar_paciente(cPaciente* paciente) {
 		}
 }
 
-list<cPaciente*>cCentro_radioterapia :: buscar_paciente_limite_radiacion() { //metodo friend, no requiere operador de ambito
+list<cPaciente*>cCentro_radioterapia::buscar_paciente_limite_radiacion() { //metodo friend, no requiere operador de ambito
 	list<cPaciente*> pacientes_radiacion;
 	bool flag = false;
 	for (list<cPaciente*>::iterator it_ = pacientes.begin(); it_ != pacientes.end(); it_++) {
 		cPaciente* aux2 = (*it_);
-		for (list<cTumor*>::iterator ti_ = aux2->get_ficha()->get_tumor().begin(); ti_ != aux2->get_ficha()->get_tumor().end(); ti_++) {
-			cTumor* aux3 = (*ti_);
+		list<cTumor*> tumoroide = aux2->get_ficha()->get_tumor();
+		for (auto i = tumoroide.begin(); i != tumoroide.end(); i++) {
+			cTumor* aux3 = (*i);
 			flag = false;
 			if (aux3->get_radiacion_acum() > ((95 * 100) / (aux2->get_ficha()->get_radiacion_total()))) //busco pacientescon tumores cerca de alcanzar limite de raciacion
 			{
 				pacientes_radiacion.push_back(aux2);
 				flag = true; //para que no se repita mi paciente, puede tener mas de un tumor con +95%
 			}
-			if (flag == true) 
+			if (flag == true)
 				break;
 		}
 	}
 	return pacientes_radiacion;
-}; 
+};
 
-list<cPaciente*> cCentro_radioterapia::buscar_paciente_en_tratamiento(list<cPaciente*> paciente,eUbicacion ubitumor,string* tipotrat) //recibo una lista de pac 
-{	
-	list<cPaciente*> pacientesfiltrados;
-	for (list<cPaciente*>::iterator it_ = paciente.begin(); it_ != paciente.end(); it_++)
+cPaciente* cCentro_radioterapia::buscar_paciente_en_tratamiento(cPaciente* paciente, eUbicacion ubitumor, string* tipotrat) //recibo una lista de pac 
+{
+	int contadorcito = 0;
+	cPaciente* p = paciente;
+	list<cTumor*> tumores2 = p->get_ficha()->get_tumor();
+	for (list<cTumor*>::iterator it_ = tumores2.begin(); it_ != tumores2.end(); it_++)
 	{
-		bool flag = false;
-		cPaciente* aux2 = (*it_);
-		for (list<cTumor*>::iterator ti_ = aux2->get_ficha()->get_tumor().begin(); ti_ != aux2->get_ficha()->get_tumor().end(); ti_++) //BUSCA POR UBICACION
+		cTumor* aux = (*it_);
+		if (aux->get_ubicacion() == ubitumor)
 		{
-			cTumor* tumorcito = (*ti_);
-			if ( tumorcito->get_ubicacion() == ubitumor)
-			{
-				flag = true;
-			}
-		}
-		if (flag == true)
-		{
-			pacientesfiltrados.push_back(aux2);
+			contadorcito++;
 		}
 	}
 
-	list<cPaciente*>pacientesfiltradosfinal;
-
-	for (list<cPaciente*> ::iterator it_ = pacientesfiltrados.begin(); it_ != pacientesfiltrados.end(); it_++)
+	if (contadorcito == 1)
 	{
-		cPaciente* aux2 = (*it_);
-		bool flag = false;
-
-		for (list<string*>::iterator ti_ = aux2->get_ficha()->get_tipo_tratamiento().begin(); ti_ != aux2->get_ficha()->get_tipo_tratamiento().end(); ti_++) //BUSCA POR TRATAMIENTO
-		{
-			string* tratamiento = (*ti_);
-			if (tratamiento == tipotrat) 
-			{
-				flag = true;
-			}
-
-		}
-		if (flag == true)
-		{
-			pacientesfiltradosfinal.push_back(aux2);
-		}
+		return paciente;
 	}
-
-	return pacientesfiltradosfinal;
-
+	else return nullptr;
 };
 
 void cCentro_radioterapia::sacar_paciente(cPaciente* paciente) {
@@ -148,13 +123,13 @@ ostream& cCentro_radioterapia::operator<<(ostream& out)
 cCentro_radioterapia::~cCentro_radioterapia() {
 	this->cantidad_empleados--;
 
-	for (list<cEmpleado*>::iterator it = empleados.begin(); it != empleados.end(); it++) {
-
-		this->empleados.pop_back();
+	while (this->empleados.size() != 0)
+	{
+		empleados.pop_back();
 	}
-	for (list<cPaciente*>::iterator it = pacientes.begin(); it != pacientes.end(); it++) {
+	while (this->pacientes.size() != 0)
+	{
 		pacientes.pop_back();
 	}
-
 
 };
