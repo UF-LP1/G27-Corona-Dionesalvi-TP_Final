@@ -2,7 +2,7 @@
 #ifndef _CCENTRO_RADIOTERAPIA_H
 #define _CCENTRO_RADIOTERAPIA_H
 
-#include <list>
+
 #include "cPaciente.h"
 #include "cDosimetrista.h"
 

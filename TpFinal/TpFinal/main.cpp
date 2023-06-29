@@ -35,8 +35,8 @@ int main()
 	
 	//uso la sobrecarga del + para agregar los tumores a la ficha del paciente
 	try {
-	*(ficha)+tumor1;
-	*(ficha1)+tumor6;
+		*(ficha)+tumor1;
+		*(ficha1)+tumor6;
 	}
 	catch (exception* e) {
 		cout << e->what() << endl;
