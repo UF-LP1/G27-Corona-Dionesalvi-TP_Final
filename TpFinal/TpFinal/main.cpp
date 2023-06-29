@@ -42,11 +42,20 @@ int main()
 	cPaciente* paciente4 = new cPaciente("Fede", "45587232", "m", "1189976632", "B-", 55, ficha1);
 	cPaciente* paciente5 = new cPaciente("Cata", "44727252", "f", "1522190362", "0", 44, ficha);
 
-	listapacientess.push_back(paciente1);
-	listapacientess.push_back(paciente2);
-	listapacientess.push_back(paciente3);
-	listapacientess.push_back(paciente4);
-	listapacientess.push_back(paciente5);
+
+	//se agregan los pacientes a la lista de pacientes totales
+	try {
+		listapacientess.push_back(paciente1);
+		listapacientess.push_back(paciente2);
+		listapacientess.push_back(paciente3);
+		listapacientess.push_back(paciente4);
+		listapacientess.push_back(paciente5);
+	}
+	catch (exception* e) {
+		cout << e->what() << endl;
+		delete e;
+	}
+
 
 	cCentro_radioterapia* centrito = new cCentro_radioterapia("Ecuador 1050", listapacientess, listaempleados, 80);
 
@@ -62,14 +71,6 @@ int main()
 	string* trat = new string;
 	list<cPaciente*> superfiltrados;
 
-	cout << "Se agrega el nuevo paciente a la lista" << endl << endl; 
-	try {
-		BSA.agregar_donante(mariano, chubut);//agrego al donante nuevo
-	}
-	catch (exception* e) {
-		cout << e->what() << endl;
-		delete e;
-	}
 
 	switch (opcion)
 	{
