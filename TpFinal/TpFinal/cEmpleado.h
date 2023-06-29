@@ -1,6 +1,5 @@
 #pragma once
-#include <string> //preguntar 
-#include <ctime> 
+
 #include "cPaciente.h"
 
 

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <sstream>
 #include "cFicha_paciente.h"
 

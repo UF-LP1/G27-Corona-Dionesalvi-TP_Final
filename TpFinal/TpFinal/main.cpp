@@ -1,4 +1,4 @@
-#include <string>
+#include <exception>
 #include "cCentro_radioterapia.h"
 #include "cOncologo.h"
 
@@ -32,9 +32,17 @@ int main()
 
 	string v = "braquiterapia";
 	ficha->agregar_tratamiento("braquiterapia");
-
+	
+	//uso la sobrecarga del + para agregar los tumores a la ficha del paciente
+	try {
 	*(ficha)+tumor1;
 	*(ficha1)+tumor6;
+	}
+	catch (exception* e) {
+		cout << e->what() << endl;
+		delete e;
+	}
+	
 
 	cPaciente* paciente1 = new cPaciente("Maca", "43353332", "f", "1127984632", "AB", 44, ficha1);
 	cPaciente* paciente2 = new cPaciente("Juan", "44637232", "m", "1123435632", "A+", 60, ficha);
@@ -47,7 +55,6 @@ int main()
 
 	//se agregan los pacientes a la lista de pacientes totales
 
-	try {
 		listapacientess.push_back(paciente1);
 		listapacientess.push_back(paciente2);
 		listapacientess.push_back(paciente3);
@@ -56,11 +63,6 @@ int main()
 		listapacientess.push_back(paciente6);
 		listapacientess.push_back(paciente7);
 		listapacientess.push_back(paciente8);
-	}
-	catch (exception* e) {
-		cout << e->what() << endl;
-		delete e;
-	}
 
 
 	cCentro_radioterapia* centrito = new cCentro_radioterapia("Ecuador 1050", listapacientess, listaempleados, 80);

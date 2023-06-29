@@ -11,7 +11,7 @@ cCentro_radioterapia::cCentro_radioterapia(string direccion, list<cPaciente*> pa
 	this->cantidad_empleados++;
 }
 
-void contactar_paciente(cOncologo* o, cPaciente* z) {
+void cCentro_radioterapia::contactar_paciente(cOncologo* o, cPaciente* z) {
 	cFicha_paciente* k = z->get_ficha();
 	cFecha* a = new cFecha();
 	bool b = o->asistencia_sesion(k, a);
