@@ -18,5 +18,5 @@ private:
 	eTamanio tamanio;
 	eUbicacion ubicacion;
 	float radiacion_acum;
-
+	
 };

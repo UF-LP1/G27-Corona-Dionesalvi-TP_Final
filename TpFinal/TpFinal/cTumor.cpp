@@ -34,6 +34,4 @@ void cTumor::set_radiacion_acum(float radiacion) {
 }
 
 
-cTumor::~cTumor() {
-
-};
+cTumor::~cTumor() {};
